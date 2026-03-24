@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { DEFAULT_SITE_URL } from "../app/seo/routes";
 import { heroContent, landingSections, seoScenarios } from "../content";
 import { trackEvent } from "../shared/analytics";
 import { Section } from "../shared/ui/Section";
@@ -15,7 +16,7 @@ export function LandingPage() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Tadilat",
-      url: "https://ramiz2284.github.io/tadilat/",
+      url: `${DEFAULT_SITE_URL}/`,
       description:
         "Калькулятор ремонта квартиры в Турции с диапазоном сметы, сроками и shareable результатом.",
     },

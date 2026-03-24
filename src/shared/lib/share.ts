@@ -1,4 +1,5 @@
 import type { CalculatorState } from "../../features/calculator/model";
+import { DEFAULT_SITE_URL } from "../../app/seo/routes";
 
 const PARAM_NAME = "data";
 
@@ -15,7 +16,10 @@ export function decodeCalculatorState(raw: string) {
 }
 
 export function buildShareUrl(state: CalculatorState) {
-  const url = new URL(window.location.origin + "/result");
+  const siteUrl = window.location.origin.includes("localhost")
+    ? window.location.origin
+    : DEFAULT_SITE_URL;
+  const url = new URL("/result", siteUrl);
   url.searchParams.set(PARAM_NAME, encodeCalculatorState(state));
   return url.toString();
 }

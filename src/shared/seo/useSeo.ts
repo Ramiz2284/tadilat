@@ -32,7 +32,9 @@ function upsertLink(rel: string, href: string) {
 
 export function useSeo(meta: SeoMeta) {
   useEffect(() => {
-    const siteUrl = window.location.origin || DEFAULT_SITE_URL;
+    const siteUrl = window.location.origin.includes("localhost")
+      ? window.location.origin
+      : DEFAULT_SITE_URL;
     const canonical = new URL(meta.path ?? window.location.pathname, siteUrl).toString();
     const fullTitle = meta.title.includes(SITE_NAME) ? meta.title : `${meta.title} | ${SITE_NAME}`;
 

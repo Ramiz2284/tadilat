@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import manifest from "../src/app/seo/routes-manifest.json" with { type: "json" };
 
-const siteUrl = "https://ramiz2284.github.io/tadilat";
+const siteUrl = "https://tadilat-henna.vercel.app";
 const outputPath = resolve(process.cwd(), "public", "sitemap.xml");
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

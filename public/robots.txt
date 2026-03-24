@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ramiz2284.github.io/tadilat/sitemap.xml
+Sitemap: https://tadilat-henna.vercel.app/sitemap.xml
