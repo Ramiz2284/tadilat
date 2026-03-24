@@ -87,8 +87,9 @@ export function WizardStepContent({
           <article className="hint-card">
             <strong>Как это влияет на расчет</strong>
             <p>
-              Площадь двигает не только стоимость, но и длительность этапов. Для кухни
-              и санузла нагрузка на квадратный метр выше, чем для сухих комнат.
+              Площадь влияет не только на стоимость, но и на длительность этапов. Для
+              кухни и санузла нагрузка на квадратный метр обычно выше, чем для сухих
+              комнат.
             </p>
           </article>
         </div>
@@ -120,7 +121,8 @@ export function WizardStepContent({
               <div>
                 <strong>Рекомендуемый старт для этого типа объекта</strong>
                 <p>
-                  Для {getObjectTypeLabel(state.objectType).toLowerCase()} можно сразу включить базовый набор работ и потом убрать лишнее.
+                  Для {getObjectTypeLabel(state.objectType).toLowerCase()} можно сразу
+                  включить базовый набор работ, а затем убрать лишнее.
                 </p>
               </div>
               <button className="button button-secondary" onClick={onRecommendedWorksApply} type="button">
@@ -200,14 +202,14 @@ export function WizardStepContent({
 
       {activeStep?.id === "result" ? (
         <div className="result-preview-grid">
-          <div className="summary-panel">
-            <div className="summary-card">
-              <span>Объект</span>
-              <strong>{state.objectType ?? "Не выбран"}</strong>
-            </div>
-            <div className="summary-card">
-              <span>Площадь</span>
-              <strong>{state.totalArea ? `${state.totalArea} м²` : "Не указана"}</strong>
+            <div className="summary-panel">
+              <div className="summary-card">
+                <span>Объект</span>
+                <strong>{getObjectTypeLabel(state.objectType)}</strong>
+              </div>
+              <div className="summary-card">
+                <span>Площадь</span>
+                <strong>{state.totalArea ? `${state.totalArea} м²` : "Не указана"}</strong>
             </div>
             <div className="summary-card">
               <span>Работы</span>
@@ -230,10 +232,16 @@ export function WizardStepContent({
                 <p>
                   {liveEstimate.timeline.totalMinDays}-{liveEstimate.timeline.totalMaxDays} дней
                 </p>
-                <small>{getWorkNames(state).slice(0, 4).join(", ") || "Выберите работы"}</small>
+                <small>
+                  {getWorkNames(state).slice(0, 4).join(", ") ||
+                    "Выберите виды работ, чтобы увидеть итог"}
+                </small>
               </>
             ) : (
-              <p>Заполните обязательные шаги, и здесь появится живой предпросмотр расчета.</p>
+              <p>
+                Заполните обязательные шаги, и здесь появится живой предпросмотр
+                расчета.
+              </p>
             )}
           </div>
         </div>

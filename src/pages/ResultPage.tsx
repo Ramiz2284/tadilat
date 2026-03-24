@@ -55,6 +55,7 @@ export function ResultPage() {
   );
   const validation = validateCalculatorState(normalizedState);
   const estimate = validation.isValid ? calculateEstimate(normalizedState) : null;
+  const shareLabel = copied ? "Ссылка скопирована" : "Скопировать ссылку";
 
   async function copyShareLink() {
     await navigator.clipboard.writeText(buildShareUrl(normalizedState));
@@ -69,7 +70,7 @@ export function ResultPage() {
           <p className="eyebrow">Результат недоступен</p>
           <h1>Пока недостаточно данных для расчета</h1>
           <p>
-            Сначала нужно выбрать объект, площадь и хотя бы один вид работ. После этого
+            Сначала выберите объект, площадь и хотя бы один вид работ. После этого
             страница результата соберется автоматически.
           </p>
           <Link className="button button-primary" to="/calculator">
@@ -159,7 +160,7 @@ export function ResultPage() {
             <h2>Что делать дальше</h2>
             <div className="result-actions">
               <button className="button button-primary" onClick={copyShareLink} type="button">
-                {copied ? "Ссылка скопирована" : "Скопировать ссылку"}
+                {shareLabel}
               </button>
               <button className="button button-secondary" onClick={() => window.print()} type="button">
                 Распечатать / PDF
@@ -169,8 +170,8 @@ export function ResultPage() {
               </Link>
             </div>
             <p className="muted-note">
-              Отправьте этот результат мастеру, чтобы сравнивать предложения по одному и тому же
-              списку работ.
+              Отправьте этот результат мастеру, чтобы сравнивать предложения по одному и
+              тому же списку работ, а не по разным устным описаниям.
             </p>
           </article>
         </div>
