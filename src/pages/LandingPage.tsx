@@ -9,61 +9,61 @@ import { Section } from "../shared/ui/Section";
 
 const pageCopy = {
   ru: {
-    seoTitle: "Калькулятор ремонта квартиры в Турции",
+    seoTitle: "\u041a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440 \u0440\u0435\u043c\u043e\u043d\u0442\u0430 \u043a\u0432\u0430\u0440\u0442\u0438\u0440\u044b \u0432 \u0422\u0443\u0440\u0446\u0438\u0438",
     seoDescription:
-      "Поймите бюджет, список работ и сроки ремонта до разговора с мастером. Калькулятор, пресеты цен, FAQ и страница результата в одном сервисе.",
+      "\u041f\u043e\u0439\u043c\u0438\u0442\u0435 \u0431\u044e\u0434\u0436\u0435\u0442, \u0441\u043f\u0438\u0441\u043e\u043a \u0440\u0430\u0431\u043e\u0442 \u0438 \u0441\u0440\u043e\u043a\u0438 \u0440\u0435\u043c\u043e\u043d\u0442\u0430 \u0434\u043e \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430 \u0441 \u043c\u0430\u0441\u0442\u0435\u0440\u043e\u043c. \u0412 \u043e\u0434\u043d\u043e\u043c \u043c\u0435\u0441\u0442\u0435 \u0432\u044b \u0443\u0432\u0438\u0434\u0438\u0442\u0435 \u043e\u0440\u0438\u0435\u043d\u0442\u0438\u0440 \u043f\u043e \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u0438, \u044d\u0442\u0430\u043f\u0430\u043c \u0438 \u0441\u043e\u0441\u0442\u0430\u0432\u0443 \u0440\u0430\u0431\u043e\u0442.",
     popularDescription:
-      "Эти страницы помогают заходить в продукт по понятным поисковым сценариям: квартира, кухня и санузел.",
-    popularTitle: "Популярные сценарии ремонта",
-    openScenario: "Открыть страницу",
-    sampleLabel: "Пример результата",
-    sampleValue: "120 м² · стандарт · 45-50 дней",
-    sampleEstimate: "Ориентир: 820 000 - 1 050 000 TL",
+      "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043f \u043f\u0440\u043e\u0435\u043a\u0442\u0430 \u0438 \u043f\u043e\u0441\u043c\u043e\u0442\u0440\u0438\u0442\u0435 \u043e\u0440\u0438\u0435\u043d\u0442\u0438\u0440\u044b \u043f\u043e \u0441\u0440\u043e\u043a\u0430\u043c \u0438 \u0431\u044e\u0434\u0436\u0435\u0442\u0443.",
+    popularTitle: "\u041f\u043e\u043f\u0443\u043b\u044f\u0440\u043d\u044b\u0435 \u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0438 \u0440\u0435\u043c\u043e\u043d\u0442\u0430",
+    openScenario: "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0443",
+    sampleLabel: "\u041f\u0440\u0438\u043c\u0435\u0440 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0430",
+    sampleValue: "120 \u043c\u00B2 \u00B7 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442 \u00B7 45-50 \u0434\u043d\u0435\u0439",
+    sampleEstimate: "\u041e\u0440\u0438\u0435\u043d\u0442\u0438\u0440: 820 000 - 1 050 000 TL",
     sampleList: [
-      "Кухня, санузел, полы, электрика, сантехника",
-      "Этапы по срокам и факторы риска уже внутри",
-      "Ссылку можно отправить мастеру, семье или партнеру",
+      "\u041a\u0443\u0445\u043d\u044f, \u0441\u0430\u043d\u0443\u0437\u0435\u043b, \u043f\u043e\u043b\u044b, \u044d\u043b\u0435\u043a\u0442\u0440\u0438\u043a\u0430, \u0441\u0430\u043d\u0442\u0435\u0445\u043d\u0438\u043a\u0430",
+      "\u042d\u0442\u0430\u043f\u044b \u043f\u043e \u0441\u0440\u043e\u043a\u0430\u043c \u0438 \u0444\u0430\u043a\u0442\u043e\u0440\u044b \u0440\u0438\u0441\u043a\u0430 \u0443\u0436\u0435 \u0432\u043d\u0443\u0442\u0440\u0438",
+      "\u0421\u0441\u044b\u043b\u043a\u0443 \u043c\u043e\u0436\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043c\u0430\u0441\u0442\u0435\u0440\u0443, \u0441\u0435\u043c\u044c\u0435 \u0438\u043b\u0438 \u043f\u0430\u0440\u0442\u043d\u0435\u0440\u0443",
     ],
-    requestTitle: "Оставить запрос по проекту",
+    requestTitle: "\u041e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0437\u0430\u043f\u0440\u043e\u0441 \u043f\u043e \u043f\u0440\u043e\u0435\u043a\u0442\u0443",
     requestDescription:
-      "Если удобно, можно оставить контакт и кратко описать проект. Для MVP форма работает без кабинета и готова к подключению CRM.",
-    leadTitle: "Короткая заявка",
+      "\u0415\u0441\u043b\u0438 \u0445\u043e\u0442\u0438\u0442\u0435, \u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u043a\u043e\u043d\u0442\u0430\u043a\u0442 \u0438 \u043a\u0440\u0430\u0442\u043a\u043e \u043e\u043f\u0438\u0448\u0438\u0442\u0435 \u043f\u0440\u043e\u0435\u043a\u0442. \u0422\u0430\u043a \u0431\u0443\u0434\u0435\u0442 \u043f\u0440\u043e\u0449\u0435 \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u0448\u0430\u0433\u0443.",
+    leadTitle: "\u041e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0437\u0430\u044f\u0432\u043a\u0443",
     leadDescription:
-      "Подходит для сценария, когда человек еще не готов заполнять все шаги калькулятора, но хочет оставить проект в работе.",
+      "\u041f\u043e\u0434\u0445\u043e\u0434\u0438\u0442, \u0435\u0441\u043b\u0438 \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u043e\u0431\u0441\u0443\u0434\u0438\u0442\u044c \u043f\u0440\u043e\u0435\u043a\u0442 \u0438 \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043e\u0431\u0440\u0430\u0442\u043d\u0443\u044e \u0441\u0432\u044f\u0437\u044c \u043f\u043e \u0440\u0430\u0431\u043e\u0442\u0430\u043c \u0438 \u0431\u044e\u0434\u0436\u0435\u0442\u0443.",
   },
   tr: {
-    seoTitle: "Türkiye'de daire tadilatı hesaplayıcısı",
+    seoTitle: "T\u00FCrkiye'de daire tadilat\u0131 hesaplay\u0131c\u0131s\u0131",
     seoDescription:
-      "Ustayla konuşmadan önce bütçeyi, iş listesini ve süreyi görün. Hesaplayıcı, fiyat presetleri, FAQ ve sonuç sayfası tek bir üründe.",
+      "Ustayla konu\u015Fmadan \u00F6nce b\u00FCt\u00E7eyi, i\u015F listesini ve s\u00FCreyi g\u00F6r\u00FCn. Tek bir yerde yakla\u015F\u0131k maliyet, a\u015Famalar ve i\u015F kapsam\u0131n\u0131 inceleyin.",
     popularDescription:
-      "Bu sayfalar ürüne en yaygın arama senaryolarıyla giriş sağlar: daire, mutfak ve banyo.",
-    popularTitle: "Yaygın tadilat senaryoları",
-    openScenario: "Sayfayı aç",
-    sampleLabel: "Örnek sonuç",
-    sampleValue: "120 m² · standart · 45-50 gün",
-    sampleEstimate: "Ön aralık: 820.000 - 1.050.000 TL",
+      "Proje tipinizi se\u00E7in ve s\u00FCre ile b\u00FCt\u00E7e aral\u0131klar\u0131n\u0131 g\u00F6r\u00FCn.",
+    popularTitle: "Yayg\u0131n tadilat senaryolar\u0131",
+    openScenario: "Sayfay\u0131 a\u00E7",
+    sampleLabel: "\u00D6rnek sonu\u00E7",
+    sampleValue: "120 m\u00B2 \u00B7 standart \u00B7 45-50 g\u00FCn",
+    sampleEstimate: "\u00D6n aral\u0131k: 820.000 - 1.050.000 TL",
     sampleList: [
-      "Mutfak, banyo, zemin, elektrik ve su tesisatı",
-      "Zaman aşamaları ve risk faktörleri sonucun içinde",
-      "Bağlantıyı ustaya, aileye ya da ortağa gönderebilirsiniz",
+      "Mutfak, banyo, zemin, elektrik ve su tesisat\u0131",
+      "Zaman a\u015Famalar\u0131 ve risk fakt\u00F6rleri sonucun i\u00E7inde",
+      "Ba\u011Flant\u0131y\u0131 ustaya, aileye ya da orta\u011Fa g\u00F6nderebilirsiniz",
     ],
-    requestTitle: "Proje talebi bırak",
+    requestTitle: "Proje talebi b\u0131rak",
     requestDescription:
-      "İsterseniz iletişim bilgisi ve kısa proje notu bırakabilirsiniz. MVP için form hesap oluşturmadan çalışır ve CRM bağlantısına hazırdır.",
-    leadTitle: "Kısa talep",
+      "\u0130sterseniz ileti\u015Fim bilgisi ve k\u0131sa proje notu b\u0131rak\u0131n. B\u00F6ylece bir sonraki ad\u0131ma ge\u00E7mek daha kolay olur.",
+    leadTitle: "Talep b\u0131rak",
     leadDescription:
-      "Tüm adımları doldurmaya hazır olmayan ama projeyi sürece almak isteyen kişiler için uygundur.",
+      "Projeyi konu\u015Fmak ve i\u015Fler ile b\u00FCt\u00E7e hakk\u0131nda geri d\u00F6n\u00FC\u015F almak isteyenler i\u00E7in uygundur.",
   },
   en: {
     seoTitle: "Apartment renovation calculator for Turkey",
     seoDescription:
-      "Understand budget, work scope and timing before you talk to a contractor. Calculator, price presets, FAQ and result page in one service.",
+      "Understand budget, work scope and timing before you talk to a contractor. See estimated cost, phases and scope in one place.",
     popularDescription:
-      "These pages help people enter the product through clear search scenarios: apartment, kitchen and bathroom.",
+      "Choose the project type and see typical timing and budget ranges.",
     popularTitle: "Popular renovation scenarios",
     openScenario: "Open page",
     sampleLabel: "Sample result",
-    sampleValue: "120 m² · standard · 45-50 days",
+    sampleValue: "120 m\u00B2 \u00B7 standard \u00B7 45-50 days",
     sampleEstimate: "Reference: 820,000 - 1,050,000 TL",
     sampleList: [
       "Kitchen, bathroom, floors, electrical and plumbing",
@@ -72,10 +72,10 @@ const pageCopy = {
     ],
     requestTitle: "Leave a project request",
     requestDescription:
-      "If easier, leave a contact and a short project note. For the MVP, the form works without an account and is ready for CRM hookup.",
-    leadTitle: "Short request",
+      "If you want, leave a contact and a short project note so it is easier to move to the next step.",
+    leadTitle: "Leave a request",
     leadDescription:
-      "Useful when someone is not ready to fill out every calculator step but wants to keep the project moving.",
+      "Useful if you want to discuss the project and get feedback on scope and budget.",
   },
 };
 

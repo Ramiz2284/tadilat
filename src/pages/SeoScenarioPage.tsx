@@ -13,43 +13,43 @@ import { LeadForm } from "../shared/ui/LeadForm";
 
 const pageCopy = {
   ru: {
-    fallbackTitle: "Сценарий ремонта",
+    fallbackTitle: "\u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0439 \u0440\u0435\u043C\u043E\u043D\u0442\u0430",
     fallbackDescription:
-      "Страница со сценарием ремонта, диапазонами бюджета и частыми вопросами.",
-    notFoundEyebrow: "Страница не найдена",
-    notFoundTitle: "Такого сценария пока нет",
-    goCalculator: "Перейти к калькулятору",
-    areaLabel: "Ориентир по площади",
-    goFaq: "Перейти в FAQ",
-    leadTitle: "Оставить запрос по этому сценарию",
+      "\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u0441 \u043E\u0440\u0438\u0435\u043D\u0442\u0438\u0440\u043E\u043C \u043F\u043E \u0431\u044E\u0434\u0436\u0435\u0442\u0443 \u0438 \u0447\u0430\u0441\u0442\u044B\u043C\u0438 \u0432\u043E\u043F\u0440\u043E\u0441\u0430\u043C\u0438 \u0434\u043B\u044F \u0442\u0430\u043A\u043E\u0433\u043E \u0442\u0438\u043F\u0430 \u0440\u0435\u043C\u043E\u043D\u0442\u0430.",
+    notFoundEyebrow: "\u0421\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u0430",
+    notFoundTitle: "\u0422\u0430\u043A\u043E\u0433\u043E \u0441\u0446\u0435\u043D\u0430\u0440\u0438\u044F \u043F\u043E\u043A\u0430 \u043D\u0435\u0442",
+    goCalculator: "\u041F\u0435\u0440\u0435\u0439\u0442\u0438 \u043A \u043A\u0430\u043B\u044C\u043A\u0443\u043B\u044F\u0442\u043E\u0440\u0443",
+    areaLabel: "\u041E\u0440\u0438\u0435\u043D\u0442\u0438\u0440 \u043F\u043E \u043F\u043B\u043E\u0449\u0430\u0434\u0438",
+    goFaq: "\u041F\u0435\u0440\u0435\u0439\u0442\u0438 \u0432 FAQ",
+    leadTitle: "\u041E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u0442\u0430\u043A\u043E\u0439 \u043F\u0440\u043E\u0435\u043A\u0442",
     leadDescription:
-      "Оставьте контакт, если хотите использовать эту страницу как SEO-вход и сразу перевести пользователя в лид.",
+      "\u041E\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u043A\u043E\u043D\u0442\u0430\u043A\u0442, \u0435\u0441\u043B\u0438 \u0445\u043E\u0442\u0438\u0442\u0435 \u043E\u0431\u0441\u0443\u0434\u0438\u0442\u044C \u0440\u0430\u0431\u043E\u0442\u044B, \u0441\u0440\u043E\u043A\u0438 \u0438 \u043F\u0440\u0438\u043C\u0435\u0440\u043D\u044B\u0439 \u0431\u044E\u0434\u0436\u0435\u0442 \u043F\u043E \u044D\u0442\u043E\u043C\u0443 \u0442\u0438\u043F\u0443 \u043F\u0440\u043E\u0435\u043A\u0442\u0430.",
   },
   tr: {
     fallbackTitle: "Tadilat senaryosu",
     fallbackDescription:
-      "Bütçe aralıkları ve sık sorularla birlikte bir tadilat senaryosu sayfası.",
-    notFoundEyebrow: "Sayfa bulunamad?dı",
-    notFoundTitle: "Bu senaryo henüz yok",
-    goCalculator: "Hesaplayıcıya git",
-    areaLabel: "Alan referans?sı",
-    goFaq: "FAQ'ya git",
-    leadTitle: "Bu senaryo için talep bırak",
+      "Bu tadilat t\u00FCr\u00FC i\u00E7in b\u00FCt\u00E7e aral\u0131\u011F\u0131 ve s\u0131k sorular\u0131n yer ald\u0131\u011F\u0131 sayfa.",
+    notFoundEyebrow: "Sayfa bulunamad\u0131",
+    notFoundTitle: "Bu senaryo hen\u00FCz yok",
+    goCalculator: "Hesaplay\u0131c\u0131ya git",
+    areaLabel: "Alan aral\u0131\u011F\u0131",
+    goFaq: "SSS sayfas\u0131n\u0131 a\u00E7",
+    leadTitle: "Bu projeyi konu\u015Fal\u0131m",
     leadDescription:
-      "Bu sayfayı SEO girişi olarak kullanıp kullanıcıyı hemen leade çevirmek istiyorsanız iletişim bırakın.",
+      "Bu tip proje i\u00E7in i\u015Fler, s\u00FCre ve yakla\u015F\u0131k b\u00FCt\u00E7eyi konu\u015Fmak isterseniz ileti\u015Fim b\u0131rak\u0131n.",
   },
   en: {
     fallbackTitle: "Renovation scenario",
     fallbackDescription:
-      "A renovation scenario page with budget ranges and common questions.",
+      "A page with budget guidance and common questions for this type of renovation.",
     notFoundEyebrow: "Page not found",
     notFoundTitle: "This scenario is not available yet",
     goCalculator: "Go to calculator",
     areaLabel: "Area reference",
     goFaq: "Open FAQ",
-    leadTitle: "Leave a request for this scenario",
+    leadTitle: "Discuss this project",
     leadDescription:
-      "Leave a contact if you want this page to work as an SEO entry point and immediately capture a lead.",
+      "Leave a contact if you want to talk through works, timing and the expected budget for this type of project.",
   },
 };
 

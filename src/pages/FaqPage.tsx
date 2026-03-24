@@ -6,41 +6,41 @@ import { LeadForm } from "../shared/ui/LeadForm";
 
 const pageCopy = {
   ru: {
-    seoTitle: "FAQ по ремонту квартиры в Турции",
+    seoTitle: "FAQ \u043f\u043e \u0440\u0435\u043c\u043e\u043d\u0442\u0443 \u043a\u0432\u0430\u0440\u0442\u0438\u0440\u044b \u0432 \u0422\u0443\u0440\u0446\u0438\u0438",
     seoDescription:
-      "Ответы на частые вопросы о расчете бюджета ремонта, диапазонах цен, сроках, ТЗ для мастеров и логике работы калькулятора.",
+      "\u041e\u0442\u0432\u0435\u0442\u044b \u043d\u0430 \u0447\u0430\u0441\u0442\u044b\u0435 \u0432\u043e\u043f\u0440\u043e\u0441\u044b \u043e \u0431\u044e\u0434\u0436\u0435\u0442\u0435, \u0441\u0440\u043e\u043a\u0430\u0445 \u0438 \u0441\u043e\u0441\u0442\u0430\u0432\u0435 \u0440\u0435\u043c\u043e\u043d\u0442\u0430.",
     eyebrow: "FAQ",
-    title: "Ответы на частые вопросы о расчете ремонта",
+    title: "\u041e\u0442\u0432\u0435\u0442\u044b \u043d\u0430 \u0447\u0430\u0441\u0442\u044b\u0435 \u0432\u043e\u043f\u0440\u043e\u0441\u044b \u043e \u0440\u0430\u0441\u0447\u0435\u0442\u0435 \u0440\u0435\u043c\u043e\u043d\u0442\u0430",
     description:
-      "Здесь собраны вопросы, которые обычно мешают человеку довериться оценке бюджета и сроков до разговора с мастером.",
-    nextStep: "Лучший следующий шаг",
-    nextValue: "Сначала собрать расчет",
-    nextDescription: "Потом обсуждать предложения уже на одной основе",
-    openCalculator: "Открыть калькулятор",
-    leadTitle: "Нужен разбор проекта?",
+      "\u0417\u0434\u0435\u0441\u044c \u0441\u043e\u0431\u0440\u0430\u043d\u044b \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043e\u0431\u044b\u0447\u043d\u043e \u043c\u0435\u0448\u0430\u044e\u0442 \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0443 \u0434\u043e\u0432\u0435\u0440\u0438\u0442\u044c\u0441\u044f \u043e\u0446\u0435\u043d\u043a\u0435 \u0431\u044e\u0434\u0436\u0435\u0442\u0430 \u0438 \u0441\u0440\u043e\u043a\u043e\u0432 \u0434\u043e \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430 \u0441 \u043c\u0430\u0441\u0442\u0435\u0440\u043e\u043c.",
+    nextStep: "\u041b\u0443\u0447\u0448\u0438\u0439 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0439 \u0448\u0430\u0433",
+    nextValue: "\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0441\u043e\u0431\u0440\u0430\u0442\u044c \u0440\u0430\u0441\u0447\u0435\u0442",
+    nextDescription: "\u041f\u043e\u0442\u043e\u043c \u043e\u0431\u0441\u0443\u0436\u0434\u0430\u0442\u044c \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0443\u0436\u0435 \u043d\u0430 \u043e\u0434\u043d\u043e\u0439 \u043e\u0441\u043d\u043e\u0432\u0435",
+    openCalculator: "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440",
+    leadTitle: "\u0425\u043e\u0442\u0438\u0442\u0435 \u043e\u0431\u0441\u0443\u0434\u0438\u0442\u044c \u043f\u0440\u043e\u0435\u043a\u0442?",
     leadDescription:
-      "Если удобнее, оставьте контакт и кратко опишите проект. Это хороший слой для будущей интеграции с CRM.",
+      "\u041e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u043a\u043e\u043d\u0442\u0430\u043a\u0442 \u0438 \u043a\u0440\u0430\u0442\u043a\u043e \u043e\u043f\u0438\u0448\u0438\u0442\u0435 \u0437\u0430\u0434\u0430\u0447\u0443, \u0435\u0441\u043b\u0438 \u0445\u043e\u0442\u0438\u0442\u0435 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u044c \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440 \u043f\u043e \u0432\u0430\u0448\u0435\u043c\u0443 \u043f\u0440\u043e\u0435\u043a\u0442\u0443.",
   },
   tr: {
-    seoTitle: "Türkiye'de daire tadilatı için FAQ",
+    seoTitle: "T\u00FCrkiye'de daire tadilat\u0131 i\u00E7in SSS",
     seoDescription:
-      "Tadilat bütçesi, fiyat aralıkları, süre, usta briefi ve hesaplayıcının mantığı hakkındaki yaygın soruların yanıtları.",
-    eyebrow: "FAQ",
-    title: "Tadilat hesabı hakkındaki sık sorular",
+      "Tadilat b\u00FCt\u00E7esi, s\u00FCre ve i\u015F kapsam\u0131 hakk\u0131nda en s\u0131k sorulan sorular\u0131n yan\u0131tlar\u0131.",
+    eyebrow: "SSS",
+    title: "Tadilat hesab\u0131 hakk\u0131ndaki s\u0131k sorular",
     description:
-      "Burada, insanların usta ile konuşmadan önce bütçe ve süre tahminine güvenmesini zorlaştıran ana sorular toplanır.",
-    nextStep: "En iyi sonraki adım",
-    nextValue: "Önce hesabı toplamak",
-    nextDescription: "Sonra teklifleri aynı kapsam üzerinden konuşmak",
-    openCalculator: "Hesaplayıcıyı aç",
-    leadTitle: "Projeyi birlikte inceleyelim mi?",
+      "Burada, insanlar\u0131n usta ile konu\u015Fmadan \u00F6nce b\u00FCt\u00E7e ve s\u00FCre tahminine g\u00FCvenmesini zorla\u015Ft\u0131ran ana sorular toplan\u0131r.",
+    nextStep: "En iyi sonraki ad\u0131m",
+    nextValue: "\u00D6nce hesab\u0131 toplamak",
+    nextDescription: "Sonra teklifleri ayn\u0131 kapsam \u00FCzerinden konu\u015Fmak",
+    openCalculator: "Hesaplay\u0131c\u0131y\u0131 a\u00E7",
+    leadTitle: "Projeyi konu\u015Fmak ister misiniz?",
     leadDescription:
-      "İsterseniz iletişim bilginizi ve kısa proje notunu bırakın. Bu bölüm ileride CRM entegrasyonu için de uygundur.",
+      "Devam etmek isterseniz ileti\u015Fim bilginizi ve k\u0131sa proje notunuzu b\u0131rak\u0131n.",
   },
   en: {
     seoTitle: "FAQ for apartment renovation in Turkey",
     seoDescription:
-      "Answers to common questions about renovation budgeting, price ranges, timing, contractor briefs and how the calculator works.",
+      "Answers to common questions about renovation budget, timing and scope.",
     eyebrow: "FAQ",
     title: "Answers to common renovation estimate questions",
     description:
@@ -49,9 +49,9 @@ const pageCopy = {
     nextValue: "Build the estimate first",
     nextDescription: "Then discuss offers from the same starting point",
     openCalculator: "Open calculator",
-    leadTitle: "Need help reviewing the project?",
+    leadTitle: "Want to discuss the project?",
     leadDescription:
-      "If easier, leave a contact and a short project description. This section is also a good foundation for future CRM integration.",
+      "Leave a contact and a short project note if you want to continue the conversation.",
   },
 };
 
