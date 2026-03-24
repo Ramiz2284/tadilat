@@ -5,6 +5,7 @@ import {
   getObjectTypeLabel,
   getTimelineLabel,
 } from "../model";
+import { useHorizontalScrollHint } from "../../../shared/lib/useHorizontalScrollHint";
 
 type WizardSidebarProps = {
   state: CalculatorState;
@@ -21,6 +22,8 @@ export function WizardSidebar({
   progressPercent,
   onStepSelect,
 }: WizardSidebarProps) {
+  const stepsHint = useHorizontalScrollHint<HTMLOListElement>();
+
   return (
     <aside className="wizard-sidebar">
       <p className="eyebrow">Калькулятор ремонта</p>
@@ -41,7 +44,14 @@ export function WizardSidebar({
         </div>
       </div>
 
-      <ol className="wizard-steps">
+      <ol
+        className="wizard-steps scroll-hint"
+        data-can-scroll-left={stepsHint.state.canScrollLeft ? "true" : "false"}
+        data-can-scroll-right={stepsHint.state.canScrollRight ? "true" : "false"}
+        data-engaged={stepsHint.state.engaged ? "true" : "false"}
+        data-scrollable={stepsHint.state.scrollable ? "true" : "false"}
+        ref={stepsHint.ref}
+      >
         {steps.map((step, index) => (
           <li
             className={index === activeIndex ? "active" : ""}
