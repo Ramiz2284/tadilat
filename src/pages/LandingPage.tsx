@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { heroContent, landingSections } from "../content";
+import { heroContent, landingSections, seoScenarios } from "../content";
 import { Section } from "../shared/ui/Section";
+import { LeadForm } from "../shared/ui/LeadForm";
 
 export function LandingPage() {
   return (
@@ -44,6 +45,27 @@ export function LandingPage() {
           </article>
         ))}
       </section>
+
+      <Section
+        className="surface"
+        description="Эти страницы помогают заходить в продукт по понятным поисковым сценариям: квартира, кухня и санузел."
+        title="Популярные сценарии ремонта"
+      >
+        <div className="example-grid">
+          {seoScenarios.map((scenario) => (
+            <article className="example-card" key={scenario.slug}>
+              <h3>{scenario.eyebrow}</h3>
+              <strong>{scenario.areaRange}</strong>
+              <p>{scenario.title}</p>
+              <div className="section-actions">
+                <Link className="button button-secondary" to={`/guides/${scenario.slug}`}>
+                  Открыть страницу
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Section>
 
       {landingSections.map((section) => {
         switch (section.kind) {
@@ -156,6 +178,17 @@ export function LandingPage() {
             );
         }
       })}
+
+      <Section
+        className="surface"
+        description="Если удобно, можно оставить контакт и кратко описать проект. Для MVP форма работает без кабинета и готова к подключению CRM."
+        title="Оставить запрос по проекту"
+      >
+        <LeadForm
+          description="Подходит для сценария, когда человек еще не готов заполнять все шаги калькулятора, но хочет оставить проект в работе."
+          title="Короткая заявка"
+        />
+      </Section>
     </div>
   );
 }

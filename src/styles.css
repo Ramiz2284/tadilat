@@ -536,6 +536,33 @@ h3 {
   gap: 10px;
 }
 
+.lead-form,
+.lead-form-heading {
+  display: grid;
+  gap: 16px;
+}
+
+.lead-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  resize: vertical;
+}
+
+.lead-form-actions {
+  display: grid;
+  gap: 12px;
+}
+
 .hint-card,
 .preview-estimate-card {
   padding: 20px;
@@ -632,6 +659,7 @@ h3 {
 
   .field-grid,
   .metrics-grid,
+  .lead-grid,
   .choice-grid,
   .choice-grid.compact,
   .summary-panel {
@@ -822,6 +850,7 @@ h3 {
 
   .field-grid,
   .metrics-grid,
+  .lead-grid,
   .choice-grid,
   .choice-grid.compact,
   .summary-panel {
@@ -915,6 +944,10 @@ h3 {
     padding: 0 16px;
   }
 
+  .textarea {
+    padding: 14px 16px;
+  }
+
   .hero-card strong,
   .result-price-card strong,
   .stat-card strong,
@@ -998,7 +1031,8 @@ h3 {
 
   .result-price-card,
   .surface-panel,
-  .summary-card {
+  .summary-card,
+  .lead-form {
     break-inside: avoid;
     page-break-inside: avoid;
   }

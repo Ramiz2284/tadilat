@@ -16,6 +16,7 @@ export function RootLayout() {
           <nav className="topnav">
             <NavLink to="/">Главная</NavLink>
             <NavLink to="/calculator">Калькулятор</NavLink>
+            <NavLink to="/faq">FAQ</NavLink>
             <NavLink to="/result">Результат</NavLink>
           </nav>
 

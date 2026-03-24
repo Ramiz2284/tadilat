@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { calculateEstimate } from "../entities/estimate/model";
+import { LeadForm } from "../shared/ui/LeadForm";
 import {
   buildNormalizedCalculatorState,
   defaultCalculatorState,
@@ -174,6 +175,14 @@ export function ResultPage() {
               тому же списку работ, а не по разным устным описаниям.
             </p>
           </article>
+        </div>
+
+        <div className="surface-panel">
+          <LeadForm
+            description="Если хотите продолжить проект после расчета, оставьте контакт и короткий комментарий. Так result page начинает работать не только как отчет, но и как lead capture."
+            projectType={estimate.summary.subtitle}
+            title="Передать расчет в работу"
+          />
         </div>
       </section>
     </div>
