@@ -57,6 +57,14 @@ export function RootLayout() {
   }, [language, setLanguage, urlLanguage]);
 
   useEffect(() => {
+    if (typeof window === "undefined" || location.hash) {
+      return;
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.hash, location.pathname, location.search]);
+
+  useEffect(() => {
     if (typeof window === "undefined") {
       return;
     }
