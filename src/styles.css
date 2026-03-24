@@ -35,6 +35,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
 }
 
 a {
@@ -63,6 +64,16 @@ button {
   align-items: center;
   gap: 20px;
   padding: 22px 0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(18px);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .brand {
@@ -104,6 +115,12 @@ h3 {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(14px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.topnav::-webkit-scrollbar {
+  display: none;
 }
 
 .topnav a {
@@ -115,6 +132,10 @@ h3 {
 .topnav a.active {
   background: var(--secondary);
   color: #fff;
+}
+
+.topbar-cta {
+  white-space: nowrap;
 }
 
 .page {
@@ -233,6 +254,11 @@ h3 {
     linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 241, 232, 0.9));
 }
 
+.hero-card ul {
+  margin: 14px 0 0;
+  padding-left: 20px;
+}
+
 .hero-card-label,
 .stat-card span,
 .summary-card span {
@@ -314,6 +340,7 @@ h3 {
   border-radius: 999px;
   background: rgba(23, 77, 66, 0.08);
   border: 1px solid rgba(23, 77, 66, 0.1);
+  min-width: 0;
 }
 
 .check-item {
@@ -423,6 +450,7 @@ h3 {
   display: grid;
   gap: 24px;
   padding: 34px;
+  min-width: 0;
 }
 
 .wizard-summary {
@@ -486,6 +514,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.72);
+  min-width: 0;
 }
 
 .choice-card.selected {
@@ -525,6 +554,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.82);
+  width: 100%;
 }
 
 .summary-panel {
@@ -566,6 +596,11 @@ h3 {
   color: #fff;
 }
 
+.timeline-item,
+.risk-list li {
+  overflow-wrap: anywhere;
+}
+
 .empty-state {
   text-align: center;
   justify-items: center;
@@ -576,6 +611,10 @@ h3 {
 }
 
 @media (max-width: 1100px) {
+  .topbar {
+    position: static;
+  }
+
   .hero,
   .wizard-shell,
   .result-hero,
@@ -608,8 +647,10 @@ h3 {
 @media (max-width: 720px) {
   .app-shell {
     width: min(100% - 20px, 100%);
+    padding-bottom: 40px;
   }
 
+  .topbar-actions,
   .topbar,
   .topnav,
   .hero-actions,
@@ -627,11 +668,344 @@ h3 {
     padding: 22px;
   }
 
+  .topbar {
+    gap: 14px;
+    padding: 14px 0 18px;
+  }
+
+  .brand {
+    width: 100%;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+  }
+
+  .brand small {
+    font-size: 0.82rem;
+  }
+
+  .topnav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 4px;
+    border-radius: 18px;
+  }
+
+  .topnav a {
+    white-space: nowrap;
+    text-align: center;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .topbar-cta {
+    min-height: 44px;
+  }
+
+  .page {
+    gap: 18px;
+  }
+
+  .hero {
+    gap: 18px;
+    border-radius: 24px;
+  }
+
+  .hero h1,
+  .wizard-sidebar h1,
+  .result-hero h1 {
+    font-size: clamp(2rem, 11vw, 3rem);
+    line-height: 1;
+  }
+
+  .hero-description,
+  .section-description,
+  .wizard-sidebar p,
+  .wizard-panel-heading p,
+  .result-hero p,
+  .hero-disclaimer {
+    font-size: 0.96rem;
+  }
+
+  .hero-actions .button,
+  .section-actions .button,
+  .result-actions .button,
+  .wizard-actions .button {
+    width: 100%;
+  }
+
+  .hero-card,
+  .stat-card,
+  .info-card,
+  .step-card,
+  .example-card,
+  .surface-panel,
+  .summary-card,
+  .hint-card,
+  .preview-estimate-card {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .stats-grid {
+    gap: 12px;
+  }
+
+  .section {
+    gap: 18px;
+    border-radius: 24px;
+  }
+
+  .pill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pill {
+    border-radius: 16px;
+    padding: 12px 14px;
+  }
+
+  .check-item,
+  .faq-item {
+    padding: 16px;
+  }
+
+  .wizard-shell {
+    border-radius: 24px;
+  }
+
+  .wizard-sidebar {
+    gap: 16px;
+  }
+
+  .progress-block {
+    margin-top: 14px;
+    padding: 14px;
+  }
+
+  .wizard-steps {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scroll-snap-type: x proximity;
+  }
+
+  .wizard-steps li {
+    min-width: 240px;
+    scroll-snap-align: start;
+    padding: 12px;
+  }
+
+  .wizard-summary {
+    margin-top: 16px;
+    padding: 16px;
+  }
+
+  .wizard-panel {
+    gap: 18px;
+    padding-bottom: calc(22px + env(safe-area-inset-bottom));
+  }
+
   .field-grid,
   .metrics-grid,
   .choice-grid,
   .choice-grid.compact,
   .summary-panel {
     grid-template-columns: 1fr;
+  }
+
+  .choice-grid,
+  .choice-grid.compact {
+    gap: 10px;
+  }
+
+  .choice-card {
+    padding: 16px;
+    min-height: 108px;
+  }
+
+  .choice-card strong {
+    font-size: 1rem;
+  }
+
+  .field input {
+    height: 52px;
+  }
+
+  .recommendation-banner {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .selected-inline {
+    gap: 8px;
+  }
+
+  .wizard-actions {
+    position: sticky;
+    bottom: 0;
+    padding-top: 12px;
+    background: linear-gradient(180deg, rgba(246, 241, 232, 0), rgba(246, 241, 232, 0.96) 30%);
+  }
+
+  .result-shell {
+    gap: 18px;
+    border-radius: 24px;
+  }
+
+  .result-price-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .metrics-grid {
+    gap: 12px;
+  }
+
+  .result-grid {
+    gap: 14px;
+  }
+
+  .timeline-item + .timeline-item {
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+
+  .risk-list {
+    padding-left: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-shell {
+    width: calc(100% - 16px);
+  }
+
+  .topbar,
+  .hero,
+  .section,
+  .wizard-sidebar,
+  .wizard-panel,
+  .result-shell {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  .button {
+    min-height: 46px;
+    padding: 0 16px;
+  }
+
+  .hero-card strong,
+  .result-price-card strong,
+  .stat-card strong,
+  .summary-card strong {
+    font-size: 1.22rem;
+  }
+
+  .wizard-steps li {
+    min-width: 220px;
+  }
+
+  .choice-card {
+    min-height: 96px;
+    padding: 14px;
+  }
+}
+
+@media print {
+  :root {
+    background: #ffffff;
+    color: #111111;
+  }
+
+  body {
+    background: #ffffff;
+    overflow: visible;
+  }
+
+  .app-shell {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .topbar,
+  .wizard-actions,
+  .topbar-cta,
+  .button,
+  .muted-note {
+    display: none !important;
+  }
+
+  .page,
+  .result-shell,
+  .result-grid,
+  .metrics-grid {
+    gap: 12px;
+  }
+
+  .hero,
+  .wizard-shell,
+  .result-shell,
+  .surface,
+  .cta-banner,
+  .hero-card,
+  .stat-card,
+  .info-card,
+  .step-card,
+  .example-card,
+  .surface-panel,
+  .summary-card,
+  .result-price-card {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: 1px solid #d9d9d9 !important;
+    backdrop-filter: none !important;
+  }
+
+  .result-shell {
+    padding: 0;
+    border: 0 !important;
+  }
+
+  .result-hero,
+  .result-grid,
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    align-items: start;
+  }
+
+  .result-price-card,
+  .surface-panel,
+  .summary-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .pill {
+    background: #f5f5f5 !important;
+    border-color: #d9d9d9 !important;
+    color: #111111 !important;
   }
 }

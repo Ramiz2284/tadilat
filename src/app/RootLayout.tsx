@@ -12,11 +12,17 @@ export function RootLayout() {
           </span>
         </Link>
 
-        <nav className="topnav">
-          <NavLink to="/">Главная</NavLink>
-          <NavLink to="/calculator">Калькулятор</NavLink>
-          <NavLink to="/result">Результат</NavLink>
-        </nav>
+        <div className="topbar-actions">
+          <nav className="topnav">
+            <NavLink to="/">Главная</NavLink>
+            <NavLink to="/calculator">Калькулятор</NavLink>
+            <NavLink to="/result">Результат</NavLink>
+          </nav>
+
+          <Link className="button button-primary topbar-cta" to="/calculator">
+            Рассчитать
+          </Link>
+        </div>
       </header>
 
       <main>
