@@ -478,6 +478,7 @@ h3 {
 .result-grid {
   display: grid;
   gap: 18px;
+  align-items: stretch;
 }
 
 .stats-grid {
@@ -541,24 +542,59 @@ h3 {
 }
 
 .check-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 12px;
   padding: 18px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.7);
+  min-width: 0;
 }
 
 .faq-item {
   padding: 18px 20px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.7);
+  min-width: 0;
 }
 
 .faq-item summary {
   cursor: pointer;
   font-weight: 700;
   overflow-wrap: anywhere;
+}
+
+.info-card,
+.step-card,
+.example-card,
+.check-item,
+.faq-item {
+  min-width: 0;
+}
+
+.info-card h3,
+.step-card h3,
+.example-card h3,
+.check-item p,
+.faq-item summary,
+.faq-item p {
+  margin: 0;
+  min-width: 0;
+}
+
+.check-mark {
+  flex-shrink: 0;
+}
+
+.check-item p,
+.faq-item p {
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.faq-item p {
+  margin-top: 12px;
 }
 
 .wizard-shell {
@@ -1121,6 +1157,11 @@ h3 {
     padding: 16px;
   }
 
+  .check-item {
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+
   .wizard-shell {
     border-radius: 22px;
   }
@@ -1512,6 +1553,11 @@ h3 {
   .result-price-card,
   .hero-card {
     padding: 16px;
+  }
+
+  .check-item {
+    grid-template-columns: 32px minmax(0, 1fr);
+    column-gap: 10px;
   }
 
   .result-hero h1 {
