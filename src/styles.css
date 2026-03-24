@@ -138,6 +138,7 @@ h3 {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(14px);
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   min-width: 0;
   max-width: 100%;
@@ -163,8 +164,16 @@ h3 {
   position: relative;
 }
 
+.scroll-hint-shell {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
 .scroll-hint[data-scrollable="true"] {
   cursor: grab;
+  touch-action: pan-x;
 }
 
 .scroll-hint[data-scrollable="true"]:active {
@@ -208,6 +217,38 @@ h3 {
   animation: none;
 }
 
+.scroll-hint-badge {
+  position: absolute;
+  right: 10px;
+  top: -10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: scroll-hint-badge-pulse 1.6s ease-in-out infinite;
+  box-shadow: 0 10px 22px rgba(16, 35, 29, 0.12);
+  z-index: 3;
+}
+
+.scroll-hint-badge-nav {
+  background: rgba(255, 251, 245, 0.96);
+  color: var(--secondary);
+  border: 1px solid rgba(23, 77, 66, 0.14);
+}
+
+.scroll-hint-badge-dark {
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--secondary);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
 .wizard-steps.scroll-hint[data-scrollable="true"]::before {
   background: linear-gradient(90deg, rgba(20, 76, 66, 0.95), rgba(20, 76, 66, 0));
 }
@@ -228,6 +269,19 @@ h3 {
 
   70% {
     transform: translateX(0);
+  }
+}
+
+@keyframes scroll-hint-badge-pulse {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.92;
+  }
+
+  50% {
+    transform: translateX(6px);
+    opacity: 1;
   }
 }
 
@@ -871,6 +925,11 @@ h3 {
     gap: 8px;
   }
 
+  .scroll-hint-badge {
+    top: -8px;
+    right: 8px;
+  }
+
   .brand-mark {
     width: 42px;
     height: 42px;
@@ -1112,6 +1171,10 @@ h3 {
     outline: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  .scroll-hint-badge-dark {
+    top: -6px;
+  }
+
   .wizard-summary {
     margin-top: 4px;
     padding: 12px;
@@ -1241,17 +1304,68 @@ h3 {
     gap: 16px;
   }
 
+  .result-hero h1 {
+    font-size: clamp(1.9rem, 10vw, 2.7rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    max-width: 10ch;
+  }
+
+  .result-hero .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .result-hero p {
+    max-width: 24ch;
+    font-size: 0.94rem;
+    line-height: 1.35;
+  }
+
   .result-price-card {
     width: 100%;
     min-width: 0;
+    padding: 18px 20px;
+    border-radius: 22px;
+  }
+
+  .result-price-card span {
+    display: block;
+    font-size: 0.9rem;
+  }
+
+  .result-price-card strong {
+    margin-top: 8px;
+    font-size: clamp(1.35rem, 7vw, 1.95rem);
+    line-height: 1.08;
+  }
+
+  .result-price-card p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.32;
   }
 
   .metrics-grid {
-    gap: 12px;
+    gap: 10px;
   }
 
   .result-grid {
     gap: 14px;
+  }
+
+  .metrics-grid .summary-card {
+    padding: 16px 18px;
+    border-radius: 18px;
+  }
+
+  .metrics-grid .summary-card span {
+    font-size: 0.84rem;
+  }
+
+  .metrics-grid .summary-card strong {
+    margin-top: 8px;
+    font-size: 1rem;
+    line-height: 1.15;
   }
 
   .timeline-item + .timeline-item {
@@ -1300,6 +1414,12 @@ h3 {
     font-size: 0.84rem;
   }
 
+  .scroll-hint-badge {
+    right: 6px;
+    padding: 0 8px;
+    font-size: 0.72rem;
+  }
+
   .topbar::after {
     inset: 8px -8px auto;
     height: calc(100% - 16px);
@@ -1333,6 +1453,24 @@ h3 {
   .result-price-card,
   .hero-card {
     padding: 16px;
+  }
+
+  .result-hero h1 {
+    font-size: clamp(1.75rem, 10.5vw, 2.25rem);
+    max-width: 9ch;
+  }
+
+  .result-hero p {
+    max-width: 22ch;
+    font-size: 0.9rem;
+  }
+
+  .result-price-card strong {
+    font-size: clamp(1.22rem, 6.8vw, 1.6rem);
+  }
+
+  .metrics-grid .summary-card {
+    padding: 15px 16px;
   }
 }
 

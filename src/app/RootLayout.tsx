@@ -17,19 +17,24 @@ export function RootLayout() {
         </Link>
 
         <div className="topbar-actions">
-          <nav
-            className="topnav scroll-hint"
-            data-can-scroll-left={navHint.state.canScrollLeft ? "true" : "false"}
-            data-can-scroll-right={navHint.state.canScrollRight ? "true" : "false"}
-            data-engaged={navHint.state.engaged ? "true" : "false"}
-            data-scrollable={navHint.state.scrollable ? "true" : "false"}
-            ref={navHint.ref}
-          >
-            <NavLink to="/">Главная</NavLink>
-            <NavLink to="/calculator">Калькулятор</NavLink>
-            <NavLink to="/faq">FAQ</NavLink>
-            <NavLink to="/result">Результат</NavLink>
-          </nav>
+          <div className="scroll-hint-shell">
+            <nav
+              className="topnav scroll-hint"
+              data-can-scroll-left={navHint.state.canScrollLeft ? "true" : "false"}
+              data-can-scroll-right={navHint.state.canScrollRight ? "true" : "false"}
+              data-engaged={navHint.state.engaged ? "true" : "false"}
+              data-scrollable={navHint.state.scrollable ? "true" : "false"}
+              ref={navHint.ref}
+            >
+              <NavLink to="/">Главная</NavLink>
+              <NavLink to="/calculator">Калькулятор</NavLink>
+              <NavLink to="/faq">FAQ</NavLink>
+              <NavLink to="/result">Результат</NavLink>
+            </nav>
+            {navHint.state.scrollable && !navHint.state.engaged ? (
+              <span className="scroll-hint-badge scroll-hint-badge-nav">Свайп →</span>
+            ) : null}
+          </div>
 
           <Link
             className="button button-primary topbar-cta"

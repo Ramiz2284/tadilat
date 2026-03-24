@@ -44,28 +44,33 @@ export function WizardSidebar({
         </div>
       </div>
 
-      <ol
-        className="wizard-steps scroll-hint"
-        data-can-scroll-left={stepsHint.state.canScrollLeft ? "true" : "false"}
-        data-can-scroll-right={stepsHint.state.canScrollRight ? "true" : "false"}
-        data-engaged={stepsHint.state.engaged ? "true" : "false"}
-        data-scrollable={stepsHint.state.scrollable ? "true" : "false"}
-        ref={stepsHint.ref}
-      >
-        {steps.map((step, index) => (
-          <li
-            className={index === activeIndex ? "active" : ""}
-            key={step.id}
-            onClick={() => onStepSelect(index)}
-          >
-            <span>{index + 1}</span>
-            <div>
-              <strong>{step.title}</strong>
-              <small>{step.description}</small>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <div className="scroll-hint-shell">
+        <ol
+          className="wizard-steps scroll-hint"
+          data-can-scroll-left={stepsHint.state.canScrollLeft ? "true" : "false"}
+          data-can-scroll-right={stepsHint.state.canScrollRight ? "true" : "false"}
+          data-engaged={stepsHint.state.engaged ? "true" : "false"}
+          data-scrollable={stepsHint.state.scrollable ? "true" : "false"}
+          ref={stepsHint.ref}
+        >
+          {steps.map((step, index) => (
+            <li
+              className={index === activeIndex ? "active" : ""}
+              key={step.id}
+              onClick={() => onStepSelect(index)}
+            >
+              <span>{index + 1}</span>
+              <div>
+                <strong>{step.title}</strong>
+                <small>{step.description}</small>
+              </div>
+            </li>
+          ))}
+        </ol>
+        {stepsHint.state.scrollable && !stepsHint.state.engaged ? (
+          <span className="scroll-hint-badge scroll-hint-badge-dark">Свайп по шагам →</span>
+        ) : null}
+      </div>
 
       <div className="wizard-summary">
         <h3>Текущий сценарий</h3>
