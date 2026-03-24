@@ -1,10 +1,36 @@
 import { Link, useParams } from "react-router-dom";
 import { seoScenarios } from "../content";
 import { LeadForm } from "../shared/ui/LeadForm";
+import { useSeo } from "../shared/seo/useSeo";
 
 export function SeoScenarioPage() {
   const { slug } = useParams();
   const scenario = seoScenarios.find((item) => item.slug === slug);
+
+  useSeo({
+    title: scenario?.title ?? "Сценарий ремонта",
+    description:
+      scenario?.description ??
+      "Страница со сценарием ремонта, диапазонами бюджета и частыми вопросами.",
+    path: scenario ? `/guides/${scenario.slug}` : "/guides",
+    type: "article",
+    structuredData: scenario
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: scenario.title,
+          description: scenario.description,
+          areaServed: "Turkey",
+          offers: scenario.presets.map((preset) => ({
+            "@type": "Offer",
+            name: preset.label,
+            priceCurrency: "TRY",
+            lowPrice: preset.min,
+            highPrice: preset.max,
+          })),
+        }
+      : undefined,
+  });
 
   if (!scenario) {
     return (

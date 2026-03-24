@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ramiz2284.github.io/tadilat/sitemap.xml

@@ -1,0 +1,27 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="90" y1="56" x2="1132" y2="578" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F1E4"/>
+      <stop offset="1" stop-color="#E6F0ED"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="120" y1="108" x2="400" y2="380" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#174D42"/>
+      <stop offset="1" stop-color="#DD6F2D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="32" fill="url(#bg)"/>
+  <circle cx="1066" cy="108" r="126" fill="#DD6F2D" fill-opacity="0.12"/>
+  <circle cx="103" cy="537" r="166" fill="#174D42" fill-opacity="0.08"/>
+  <rect x="84" y="82" width="132" height="132" rx="34" fill="url(#accent)"/>
+  <text x="150" y="167" text-anchor="middle" fill="white" font-size="76" font-family="Manrope, Arial, sans-serif" font-weight="800">T</text>
+  <text x="84" y="284" fill="#B5531A" font-size="24" font-family="IBM Plex Sans, Arial, sans-serif" font-weight="700" letter-spacing="4">КАЛЬКУЛЯТОР РЕМОНТА В ТУРЦИИ</text>
+  <text x="84" y="372" fill="#10231D" font-size="64" font-family="Manrope, Arial, sans-serif" font-weight="800">Бюджет, работы</text>
+  <text x="84" y="446" fill="#10231D" font-size="64" font-family="Manrope, Arial, sans-serif" font-weight="800">и сроки до мастера</text>
+  <text x="84" y="520" fill="#51635E" font-size="28" font-family="IBM Plex Sans, Arial, sans-serif">Смета-диапазон, этапы ремонта и ссылка для отправки семье или подрядчику</text>
+  <rect x="778" y="168" width="332" height="282" rx="28" fill="white" fill-opacity="0.82" stroke="#D9E4DF"/>
+  <text x="818" y="228" fill="#51635E" font-size="24" font-family="IBM Plex Sans, Arial, sans-serif">Пример результата</text>
+  <text x="818" y="286" fill="#10231D" font-size="34" font-family="Manrope, Arial, sans-serif" font-weight="800">120 м² · стандарт</text>
+  <text x="818" y="328" fill="#10231D" font-size="34" font-family="Manrope, Arial, sans-serif" font-weight="800">45-50 дней</text>
+  <text x="818" y="394" fill="#174D42" font-size="28" font-family="IBM Plex Sans, Arial, sans-serif" font-weight="700">820 000 - 1 050 000 TL</text>
+  <text x="818" y="446" fill="#51635E" font-size="22" font-family="IBM Plex Sans, Arial, sans-serif">Кухня, санузел, полы, электрика</text>
+</svg>

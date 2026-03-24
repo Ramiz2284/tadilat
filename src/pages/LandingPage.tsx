@@ -1,9 +1,26 @@
 import { Link } from "react-router-dom";
 import { heroContent, landingSections, seoScenarios } from "../content";
+import { trackEvent } from "../shared/analytics";
 import { Section } from "../shared/ui/Section";
 import { LeadForm } from "../shared/ui/LeadForm";
+import { useSeo } from "../shared/seo/useSeo";
 
 export function LandingPage() {
+  useSeo({
+    title: "Калькулятор ремонта квартиры в Турции",
+    description:
+      "Поймите бюджет, список работ и сроки ремонта до разговора с мастером. Калькулятор, пресеты цен, FAQ и страница результата в одном сервисе.",
+    path: "/",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Tadilat",
+      url: "https://ramiz2284.github.io/tadilat/",
+      description:
+        "Калькулятор ремонта квартиры в Турции с диапазоном сметы, сроками и shareable результатом.",
+    },
+  });
+
   return (
     <div className="page landing-page">
       <section className="hero">
@@ -13,10 +30,20 @@ export function LandingPage() {
           <p className="hero-description">{heroContent.description}</p>
 
           <div className="hero-actions">
-            <Link className="button button-primary" to="/calculator">
+            <Link
+              className="button button-primary"
+              onClick={() => trackEvent("cta_click", { location: "hero", target: "calculator" })}
+              to="/calculator"
+            >
               {heroContent.primaryCta}
             </Link>
-            <a className="button button-secondary" href="#work-categories">
+            <a
+              className="button button-secondary"
+              href="#work-categories"
+              onClick={() =>
+                trackEvent("cta_click", { location: "hero", target: "work_categories" })
+              }
+            >
               {heroContent.secondaryCta}
             </a>
           </div>
@@ -58,7 +85,13 @@ export function LandingPage() {
               <strong>{scenario.areaRange}</strong>
               <p>{scenario.title}</p>
               <div className="section-actions">
-                <Link className="button button-secondary" to={`/guides/${scenario.slug}`}>
+                <Link
+                  className="button button-secondary"
+                  onClick={() =>
+                    trackEvent("cta_click", { location: "seo_scenarios", target: scenario.slug })
+                  }
+                  to={`/guides/${scenario.slug}`}
+                >
                   Открыть страницу
                 </Link>
               </div>
@@ -164,10 +197,18 @@ export function LandingPage() {
                 description={section.description}
                 actions={
                   <>
-                    <Link className="button button-primary" to="/calculator">
+                    <Link
+                      className="button button-primary"
+                      onClick={() => trackEvent("cta_click", { location: "final_cta", target: "calculator" })}
+                      to="/calculator"
+                    >
                       {section.primaryCta}
                     </Link>
-                    <Link className="button button-secondary" to="/result">
+                    <Link
+                      className="button button-secondary"
+                      onClick={() => trackEvent("cta_click", { location: "final_cta", target: "result" })}
+                      to="/result"
+                    >
                       {section.secondaryCta}
                     </Link>
                   </>
@@ -178,7 +219,7 @@ export function LandingPage() {
             );
         }
       })}
-
+      
       <Section
         className="surface"
         description="Если удобно, можно оставить контакт и кратко описать проект. Для MVP форма работает без кабинета и готова к подключению CRM."

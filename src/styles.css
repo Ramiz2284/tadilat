@@ -563,6 +563,12 @@ h3 {
   gap: 12px;
 }
 
+.contact-routing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .hint-card,
 .preview-estimate-card {
   padding: 20px;
@@ -770,7 +776,8 @@ h3 {
   .hero-actions .button,
   .section-actions .button,
   .result-actions .button,
-  .wizard-actions .button {
+  .wizard-actions .button,
+  .contact-routing .button {
     width: 100%;
   }
 

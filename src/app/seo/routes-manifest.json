@@ -1,0 +1,24 @@
+[
+  { "path": "/", "changefreq": "weekly", "priority": 1, "index": true },
+  { "path": "/calculator", "changefreq": "weekly", "priority": 0.9, "index": true },
+  { "path": "/faq", "changefreq": "monthly", "priority": 0.8, "index": true },
+  { "path": "/result", "changefreq": "monthly", "priority": 0.3, "index": false },
+  {
+    "path": "/guides/apartment-renovation",
+    "changefreq": "weekly",
+    "priority": 0.85,
+    "index": true
+  },
+  {
+    "path": "/guides/kitchen-renovation",
+    "changefreq": "weekly",
+    "priority": 0.85,
+    "index": true
+  },
+  {
+    "path": "/guides/bathroom-renovation",
+    "changefreq": "weekly",
+    "priority": 0.85,
+    "index": true
+  }
+]

@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { calculateEstimate } from "../entities/estimate/model";
 import { LeadForm } from "../shared/ui/LeadForm";
+import { trackEvent } from "../shared/analytics";
 import {
   buildNormalizedCalculatorState,
   defaultCalculatorState,
@@ -9,6 +10,7 @@ import {
 } from "../features/calculator/model";
 import { loadCalculatorState } from "../shared/lib/persistence";
 import { buildShareUrl, getSharedStateFromSearch } from "../shared/lib/share";
+import { useSeo } from "../shared/seo/useSeo";
 
 function formatCurrency(value: number) {
   return `${new Intl.NumberFormat("tr-TR").format(value)} TL`;
@@ -58,8 +60,20 @@ export function ResultPage() {
   const estimate = validation.isValid ? calculateEstimate(normalizedState) : null;
   const shareLabel = copied ? "Ссылка скопирована" : "Скопировать ссылку";
 
+  useSeo({
+    title: "Предварительный расчет ремонта",
+    description:
+      "Страница результата с диапазоном цены, этапами ремонта, списком работ и факторами, которые влияют на итоговую стоимость.",
+    path: "/result",
+    noindex: true,
+  });
+
   async function copyShareLink() {
     await navigator.clipboard.writeText(buildShareUrl(normalizedState));
+    trackEvent("result_copy", {
+      source: "result_page",
+      project_type: normalizedState.objectType ?? "unknown",
+    });
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   }

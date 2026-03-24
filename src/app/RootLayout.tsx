@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { trackEvent } from "../shared/analytics";
 
 export function RootLayout() {
   return (
@@ -20,7 +21,11 @@ export function RootLayout() {
             <NavLink to="/result">Результат</NavLink>
           </nav>
 
-          <Link className="button button-primary topbar-cta" to="/calculator">
+          <Link
+            className="button button-primary topbar-cta"
+            onClick={() => trackEvent("cta_click", { location: "topbar", target: "calculator" })}
+            to="/calculator"
+          >
             Рассчитать
           </Link>
         </div>

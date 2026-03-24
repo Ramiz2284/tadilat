@@ -16,7 +16,9 @@ import {
   type WorkCategory,
 } from "../features/calculator/model";
 import { WizardSidebar, WizardStepContent } from "../features/calculator/ui";
+import { trackEvent } from "../shared/analytics";
 import { loadCalculatorState, saveCalculatorState } from "../shared/lib/persistence";
+import { useSeo } from "../shared/seo/useSeo";
 
 function toggleValue<T>(list: T[], value: T) {
   return list.includes(value) ? list.filter((item) => item !== value) : [...list, value];
@@ -27,6 +29,13 @@ function getVisibleSteps(state: CalculatorState) {
 }
 
 export function CalculatorPage() {
+  useSeo({
+    title: "Калькулятор ремонта: рассчитать бюджет и сроки",
+    description:
+      "Выберите объект, площадь, виды работ, материалы и желаемый темп. Получите предварительный диапазон сметы и этапы ремонта.",
+    path: "/calculator",
+  });
+
   const navigate = useNavigate();
   const [state, setState] = useState<CalculatorState>(defaultCalculatorState);
   const [activeStepId, setActiveStepId] = useState<CalculatorStep["id"]>("object-type");
@@ -36,6 +45,12 @@ export function CalculatorPage() {
     if (persistedState) {
       setState(persistedState);
     }
+  }, []);
+
+  useEffect(() => {
+    trackEvent("calculator_start", {
+      source: "calculator_page",
+    });
   }, []);
 
   useEffect(() => {

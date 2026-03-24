@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { trackEvent } from "../analytics";
 import { saveLead } from "../lib/lead-capture";
+import type { LeadFormPayload } from "../lib/lead-capture";
+import { LEAD_EMAIL, LEAD_WHATSAPP, buildEmailUrl, buildWhatsAppUrl } from "../lib/lead-routing";
 
 type LeadFormProps = {
   title: string;
@@ -9,6 +12,7 @@ type LeadFormProps = {
 
 export function LeadForm({ title, description, projectType = "" }: LeadFormProps) {
   const [sent, setSent] = useState(false);
+  const [lastPayload, setLastPayload] = useState<LeadFormPayload | null>(null);
   const [form, setForm] = useState({
     name: "",
     contact: "",
@@ -31,9 +35,17 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
       return;
     }
 
-    saveLead({
+    const payload: LeadFormPayload = {
       ...form,
       createdAt: new Date().toISOString(),
+    };
+
+    saveLead(payload);
+    setLastPayload(payload);
+    trackEvent("lead_submit", {
+      project_type: payload.projectType || "unknown",
+      contact_type: payload.contact.includes("@") ? "email" : "phone_or_messenger",
+      area: payload.area,
     });
     setSent(true);
     setForm((current) => ({
@@ -109,11 +121,50 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
 
       <div className="lead-form-actions">
         <button className="button button-primary" type="submit">
-          {sent ? "Заявка сохранена" : "Оставить заявку"}
+          {sent ? "Заявка подготовлена" : "Подготовить заявку"}
         </button>
         <p className="muted-note">
-          Для MVP форма сохраняется локально и готова к подключению API или CRM.
+          Заявка сохраняется локально и может быть сразу отправлена в WhatsApp или по email.
         </p>
+      </div>
+
+      <div className="contact-routing">
+        <a
+          className="button button-secondary"
+          href={buildWhatsAppUrl(
+            lastPayload ?? {
+              ...form,
+              createdAt: new Date().toISOString(),
+            },
+          )}
+          onClick={() =>
+            trackEvent("cta_click", {
+              location: "lead_form_whatsapp",
+              project_type: form.projectType || projectType || "unknown",
+            })
+          }
+          rel="noreferrer"
+          target="_blank"
+        >
+          WhatsApp: {LEAD_WHATSAPP}
+        </a>
+        <a
+          className="button button-ghost"
+          href={buildEmailUrl(
+            lastPayload ?? {
+              ...form,
+              createdAt: new Date().toISOString(),
+            },
+          )}
+          onClick={() =>
+            trackEvent("cta_click", {
+              location: "lead_form_email",
+              project_type: form.projectType || projectType || "unknown",
+            })
+          }
+        >
+          Email: {LEAD_EMAIL}
+        </a>
       </div>
     </form>
   );

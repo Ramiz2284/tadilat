@@ -1,8 +1,28 @@
 import { Link } from "react-router-dom";
 import { expandedFaq } from "../content";
 import { LeadForm } from "../shared/ui/LeadForm";
+import { useSeo } from "../shared/seo/useSeo";
 
 export function FaqPage() {
+  useSeo({
+    title: "FAQ по ремонту квартиры в Турции",
+    description:
+      "Ответы на частые вопросы о расчете бюджета ремонта, диапазонах цен, сроках, ТЗ для мастеров и логике работы калькулятора.",
+    path: "/faq",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: expandedFaq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+  });
+
   return (
     <div className="page">
       <section className="result-shell">
