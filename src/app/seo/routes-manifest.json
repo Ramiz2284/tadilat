@@ -1,24 +1,25 @@
 [
-  { "path": "/", "changefreq": "weekly", "priority": 1, "index": true },
-  { "path": "/calculator", "changefreq": "weekly", "priority": 0.9, "index": true },
-  { "path": "/faq", "changefreq": "monthly", "priority": 0.8, "index": true },
-  { "path": "/result", "changefreq": "monthly", "priority": 0.3, "index": false },
-  {
-    "path": "/guides/apartment-renovation",
-    "changefreq": "weekly",
-    "priority": 0.85,
-    "index": true
-  },
-  {
-    "path": "/guides/kitchen-renovation",
-    "changefreq": "weekly",
-    "priority": 0.85,
-    "index": true
-  },
-  {
-    "path": "/guides/bathroom-renovation",
-    "changefreq": "weekly",
-    "priority": 0.85,
-    "index": true
-  }
+  { "pageId": "home", "language": "ru", "path": "/", "changefreq": "weekly", "priority": 1, "index": true },
+  { "pageId": "calculator", "language": "ru", "path": "/kalkulyator", "changefreq": "weekly", "priority": 0.9, "index": true },
+  { "pageId": "faq", "language": "ru", "path": "/faq", "changefreq": "monthly", "priority": 0.8, "index": true },
+  { "pageId": "result", "language": "ru", "path": "/rezultat", "changefreq": "monthly", "priority": 0.3, "index": false },
+  { "pageId": "guide-apartment-renovation", "language": "ru", "path": "/gidy/remont-kvartiry", "changefreq": "weekly", "priority": 0.85, "index": true },
+  { "pageId": "guide-kitchen-renovation", "language": "ru", "path": "/gidy/remont-kuhni", "changefreq": "weekly", "priority": 0.85, "index": true },
+  { "pageId": "guide-bathroom-renovation", "language": "ru", "path": "/gidy/remont-sanuzla", "changefreq": "weekly", "priority": 0.85, "index": true },
+
+  { "pageId": "home", "language": "tr", "path": "/tr", "changefreq": "weekly", "priority": 0.95, "index": true },
+  { "pageId": "calculator", "language": "tr", "path": "/tr/hesaplayici", "changefreq": "weekly", "priority": 0.9, "index": true },
+  { "pageId": "faq", "language": "tr", "path": "/tr/sss", "changefreq": "monthly", "priority": 0.8, "index": true },
+  { "pageId": "result", "language": "tr", "path": "/tr/sonuc", "changefreq": "monthly", "priority": 0.3, "index": false },
+  { "pageId": "guide-apartment-renovation", "language": "tr", "path": "/tr/rehberler/daire-tadilati", "changefreq": "weekly", "priority": 0.85, "index": true },
+  { "pageId": "guide-kitchen-renovation", "language": "tr", "path": "/tr/rehberler/mutfak-tadilati", "changefreq": "weekly", "priority": 0.85, "index": true },
+  { "pageId": "guide-bathroom-renovation", "language": "tr", "path": "/tr/rehberler/banyo-tadilati", "changefreq": "weekly", "priority": 0.85, "index": true },
+
+  { "pageId": "home", "language": "en", "path": "/en", "changefreq": "weekly", "priority": 0.95, "index": true },
+  { "pageId": "calculator", "language": "en", "path": "/en/calculator", "changefreq": "weekly", "priority": 0.9, "index": true },
+  { "pageId": "faq", "language": "en", "path": "/en/faq", "changefreq": "monthly", "priority": 0.8, "index": true },
+  { "pageId": "result", "language": "en", "path": "/en/result", "changefreq": "monthly", "priority": 0.3, "index": false },
+  { "pageId": "guide-apartment-renovation", "language": "en", "path": "/en/guides/apartment-renovation", "changefreq": "weekly", "priority": 0.85, "index": true },
+  { "pageId": "guide-kitchen-renovation", "language": "en", "path": "/en/guides/kitchen-renovation", "changefreq": "weekly", "priority": 0.85, "index": true },
+  { "pageId": "guide-bathroom-renovation", "language": "en", "path": "/en/guides/bathroom-renovation", "changefreq": "weekly", "priority": 0.85, "index": true }
 ]

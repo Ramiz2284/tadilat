@@ -9,6 +9,10 @@ type SeoMeta = {
   image?: string;
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+  alternates?: Array<{
+    hrefLang: string;
+    path: string;
+  }>;
 };
 
 function upsertMeta(selector: string, create: () => HTMLMetaElement, content: string) {
@@ -20,11 +24,17 @@ function upsertMeta(selector: string, create: () => HTMLMetaElement, content: st
   element.setAttribute("content", content);
 }
 
-function upsertLink(rel: string, href: string) {
-  let element = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+function upsertLink(rel: string, href: string, hreflang?: string) {
+  const selector = hreflang
+    ? `link[rel="${rel}"][hreflang="${hreflang}"]`
+    : `link[rel="${rel}"]:not([hreflang])`;
+  let element = document.head.querySelector<HTMLLinkElement>(selector);
   if (!element) {
     element = document.createElement("link");
     element.rel = rel;
+    if (hreflang) {
+      element.hreflang = hreflang;
+    }
     document.head.appendChild(element);
   }
   element.href = href;
@@ -110,6 +120,14 @@ export function useSeo(meta: SeoMeta) {
 
     upsertLink("canonical", canonical);
 
+    document.head
+      .querySelectorAll('link[rel="alternate"][hreflang]')
+      .forEach((element) => element.remove());
+
+    meta.alternates?.forEach((alternate) => {
+      upsertLink("alternate", new URL(alternate.path, siteUrl).toString(), alternate.hrefLang);
+    });
+
     const scriptId = "seo-structured-data";
     const existingScript = document.getElementById(scriptId);
     if (existingScript) {
@@ -130,5 +148,14 @@ export function useSeo(meta: SeoMeta) {
         script.remove();
       }
     };
-  }, [meta.description, meta.image, meta.noindex, meta.path, meta.structuredData, meta.title, meta.type]);
+  }, [
+    meta.alternates,
+    meta.description,
+    meta.image,
+    meta.noindex,
+    meta.path,
+    meta.structuredData,
+    meta.title,
+    meta.type,
+  ]);
 }

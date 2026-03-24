@@ -1,5 +1,6 @@
 import type { CalculatorState } from "../../features/calculator/model";
 import { DEFAULT_SITE_URL } from "../../app/seo/routes";
+import { getLanguageFromPathname, getRoutePath } from "../i18n";
 
 const PARAM_NAME = "data";
 
@@ -19,7 +20,8 @@ export function buildShareUrl(state: CalculatorState) {
   const siteUrl = window.location.origin.includes("localhost")
     ? window.location.origin
     : DEFAULT_SITE_URL;
-  const url = new URL("/result", siteUrl);
+  const language = getLanguageFromPathname(window.location.pathname);
+  const url = new URL(getRoutePath(language, "result"), siteUrl);
   url.searchParams.set(PARAM_NAME, encodeCalculatorState(state));
   return url.toString();
 }

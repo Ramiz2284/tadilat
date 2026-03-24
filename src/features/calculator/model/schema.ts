@@ -1,3 +1,5 @@
+import type { Language } from "../../../shared/i18n";
+
 export type ObjectType =
   | "apartment"
   | "kitchen"
@@ -66,17 +68,40 @@ export type ValidationResult = {
   errors: Partial<Record<keyof CalculatorState, string>>;
 };
 
+const validationCopy: Record<Language, Record<string, string>> = {
+  ru: {
+    objectType: "Выберите тип объекта.",
+    totalArea: "Укажите площадь больше 0 м².",
+    rooms: "Выберите хотя бы одно помещение.",
+    works: "Выберите хотя бы один вид работ.",
+  },
+  tr: {
+    objectType: "Mulk tipini secin.",
+    totalArea: "0 m²'den buyuk bir alan girin.",
+    rooms: "En az bir mekan secin.",
+    works: "En az bir is kalemi secin.",
+  },
+  en: {
+    objectType: "Choose a property type.",
+    totalArea: "Enter an area greater than 0 m².",
+    rooms: "Choose at least one room.",
+    works: "Choose at least one work category.",
+  },
+};
+
 export function validateCalculatorState(
   state: CalculatorState,
+  language: Language,
 ): ValidationResult {
+  const copy = validationCopy[language];
   const errors: ValidationResult["errors"] = {};
 
   if (!state.objectType) {
-    errors.objectType = "Выберите тип объекта.";
+    errors.objectType = copy.objectType;
   }
 
   if (!state.totalArea || state.totalArea <= 0) {
-    errors.totalArea = "Укажите площадь больше 0 м².";
+    errors.totalArea = copy.totalArea;
   }
 
   if (
@@ -85,11 +110,11 @@ export function validateCalculatorState(
     state.objectType !== "bathroom" &&
     state.rooms.length === 0
   ) {
-    errors.rooms = "Выберите хотя бы одно помещение.";
+    errors.rooms = copy.rooms;
   }
 
   if (state.works.length === 0) {
-    errors.works = "Выберите хотя бы один вид работ.";
+    errors.works = copy.works;
   }
 
   return {

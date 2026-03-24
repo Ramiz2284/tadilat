@@ -1,3 +1,5 @@
+import { useHorizontalScrollHint } from "../../../shared/lib/useHorizontalScrollHint";
+import { useI18n } from "../../../shared/i18n";
 import type { CalculatorState, CalculatorStep } from "../model";
 import {
   getExecutionLabel,
@@ -5,7 +7,6 @@ import {
   getObjectTypeLabel,
   getTimelineLabel,
 } from "../model";
-import { useHorizontalScrollHint } from "../../../shared/lib/useHorizontalScrollHint";
 
 type WizardSidebarProps = {
   state: CalculatorState;
@@ -13,6 +14,52 @@ type WizardSidebarProps = {
   activeIndex: number;
   progressPercent: number;
   onStepSelect: (index: number) => void;
+};
+
+const sidebarCopy = {
+  ru: {
+    eyebrow: "Калькулятор ремонта",
+    title: "Соберите сценарий ремонта без хаоса",
+    intro:
+      "Пройдите короткие шаги и сразу получите ориентир по бюджету, срокам и списку работ.",
+    progress: "Прогресс",
+    swipe: "Свайп по шагам →",
+    summary: "Текущий сценарий",
+    object: "Объект",
+    area: "Площадь",
+    materials: "Материалы",
+    execution: "Исполнение",
+    pace: "Темп",
+    notSet: "Не указана",
+  },
+  tr: {
+    eyebrow: "Tadilat hesaplayici",
+    title: "Tadilat senaryosunu karmasa olmadan toplayin",
+    intro: "Kisa adimlari tamamlayin ve butce, sure ve is listesi icin hemen on gorun.",
+    progress: "Ilerleme",
+    swipe: "Adimlari kaydir →",
+    summary: "Mevcut senaryo",
+    object: "Mulk",
+    area: "Alan",
+    materials: "Malzeme",
+    execution: "Iscilik",
+    pace: "Hiz",
+    notSet: "Belirtilmedi",
+  },
+  en: {
+    eyebrow: "Renovation calculator",
+    title: "Build a renovation scenario without the chaos",
+    intro: "Complete a few short steps and get an immediate view of budget, timing and scope.",
+    progress: "Progress",
+    swipe: "Swipe steps →",
+    summary: "Current scenario",
+    object: "Property",
+    area: "Area",
+    materials: "Materials",
+    execution: "Execution",
+    pace: "Pace",
+    notSet: "Not set",
+  },
 };
 
 export function WizardSidebar({
@@ -23,18 +70,18 @@ export function WizardSidebar({
   onStepSelect,
 }: WizardSidebarProps) {
   const stepsHint = useHorizontalScrollHint<HTMLOListElement>();
+  const { language } = useI18n();
+  const copy = sidebarCopy[language];
 
   return (
     <aside className="wizard-sidebar">
-      <p className="eyebrow">Калькулятор ремонта</p>
-      <h1>Соберите сценарий ремонта без хаоса</h1>
-      <p className="wizard-sidebar-intro">
-        Пройдите короткие шаги и сразу получите ориентир по бюджету, срокам и списку работ.
-      </p>
+      <p className="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.title}</h1>
+      <p className="wizard-sidebar-intro">{copy.intro}</p>
 
       <div className="progress-block">
         <div className="progress-meta">
-          <span>Прогресс</span>
+          <span>{copy.progress}</span>
           <strong>
             {activeIndex + 1} / {steps.length}
           </strong>
@@ -68,31 +115,31 @@ export function WizardSidebar({
           ))}
         </ol>
         {stepsHint.state.scrollable && !stepsHint.state.engaged ? (
-          <span className="scroll-hint-badge scroll-hint-badge-dark">Свайп по шагам →</span>
+          <span className="scroll-hint-badge scroll-hint-badge-dark">{copy.swipe}</span>
         ) : null}
       </div>
 
       <div className="wizard-summary">
-        <h3>Текущий сценарий</h3>
+        <h3>{copy.summary}</h3>
         <div className="summary-line">
-          <span>Объект</span>
-          <strong>{getObjectTypeLabel(state.objectType)}</strong>
+          <span>{copy.object}</span>
+          <strong>{getObjectTypeLabel(state.objectType, language)}</strong>
         </div>
         <div className="summary-line">
-          <span>Площадь</span>
-          <strong>{state.totalArea ? `${state.totalArea} м²` : "Не указана"}</strong>
+          <span>{copy.area}</span>
+          <strong>{state.totalArea ? `${state.totalArea} m²` : copy.notSet}</strong>
         </div>
         <div className="summary-line">
-          <span>Материалы</span>
-          <strong>{getMaterialLabel(state.materialTier)}</strong>
+          <span>{copy.materials}</span>
+          <strong>{getMaterialLabel(state.materialTier, language)}</strong>
         </div>
         <div className="summary-line">
-          <span>Исполнение</span>
-          <strong>{getExecutionLabel(state.executionTier)}</strong>
+          <span>{copy.execution}</span>
+          <strong>{getExecutionLabel(state.executionTier, language)}</strong>
         </div>
         <div className="summary-line">
-          <span>Темп</span>
-          <strong>{getTimelineLabel(state.timelinePreference)}</strong>
+          <span>{copy.pace}</span>
+          <strong>{getTimelineLabel(state.timelinePreference, language)}</strong>
         </div>
       </div>
     </aside>

@@ -1,34 +1,113 @@
 import { Link, useParams } from "react-router-dom";
-import { seoScenarios } from "../content";
-import { LeadForm } from "../shared/ui/LeadForm";
+import { getMarketPresetsContent } from "../content";
+import {
+  getAlternatesForRoute,
+  getGuidePath,
+  getGuidePathBySlug,
+  getRoutePath,
+  localeByLanguage,
+  useI18n,
+} from "../shared/i18n";
 import { useSeo } from "../shared/seo/useSeo";
+import { LeadForm } from "../shared/ui/LeadForm";
+
+const pageCopy = {
+  ru: {
+    fallbackTitle: "Сценарий ремонта",
+    fallbackDescription:
+      "Страница со сценарием ремонта, диапазонами бюджета и частыми вопросами.",
+    notFoundEyebrow: "Страница не найдена",
+    notFoundTitle: "Такого сценария пока нет",
+    goCalculator: "Перейти к калькулятору",
+    areaLabel: "Ориентир по площади",
+    goFaq: "Перейти в FAQ",
+    leadTitle: "Оставить запрос по этому сценарию",
+    leadDescription:
+      "Оставьте контакт, если хотите использовать эту страницу как SEO-вход и сразу перевести пользователя в лид.",
+  },
+  tr: {
+    fallbackTitle: "Tadilat senaryosu",
+    fallbackDescription:
+      "Bütçe aralıkları ve sık sorularla birlikte bir tadilat senaryosu sayfası.",
+    notFoundEyebrow: "Sayfa bulunamad?dı",
+    notFoundTitle: "Bu senaryo henüz yok",
+    goCalculator: "Hesaplayıcıya git",
+    areaLabel: "Alan referans?sı",
+    goFaq: "FAQ'ya git",
+    leadTitle: "Bu senaryo için talep bırak",
+    leadDescription:
+      "Bu sayfayı SEO girişi olarak kullanıp kullanıcıyı hemen leade çevirmek istiyorsanız iletişim bırakın.",
+  },
+  en: {
+    fallbackTitle: "Renovation scenario",
+    fallbackDescription:
+      "A renovation scenario page with budget ranges and common questions.",
+    notFoundEyebrow: "Page not found",
+    notFoundTitle: "This scenario is not available yet",
+    goCalculator: "Go to calculator",
+    areaLabel: "Area reference",
+    goFaq: "Open FAQ",
+    leadTitle: "Leave a request for this scenario",
+    leadDescription:
+      "Leave a contact if you want this page to work as an SEO entry point and immediately capture a lead.",
+  },
+};
 
 export function SeoScenarioPage() {
   const { slug } = useParams();
+  const { language } = useI18n();
+  const copy = pageCopy[language];
+  const { seoScenarios } = getMarketPresetsContent(language);
   const scenario = seoScenarios.find((item) => item.slug === slug);
 
   useSeo({
-    title: scenario?.title ?? "Сценарий ремонта",
-    description:
-      scenario?.description ??
-      "Страница со сценарием ремонта, диапазонами бюджета и частыми вопросами.",
-    path: scenario ? `/guides/${scenario.slug}` : "/guides",
+    title: scenario?.title ?? copy.fallbackTitle,
+    description: scenario?.description ?? copy.fallbackDescription,
+    path: scenario ? getGuidePathBySlug(language, scenario.slug) : getRoutePath(language, "home"),
+    alternates: scenario ? getAlternatesForRoute("guide", { scenarioId: scenario.id }) : undefined,
     type: "article",
     structuredData: scenario
-      ? {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: scenario.title,
-          description: scenario.description,
-          areaServed: "Turkey",
-          offers: scenario.presets.map((preset) => ({
-            "@type": "Offer",
-            name: preset.label,
-            priceCurrency: "TRY",
-            lowPrice: preset.min,
-            highPrice: preset.max,
-          })),
-        }
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: scenario.title,
+            description: scenario.description,
+            areaServed: "Turkey",
+            inLanguage: language,
+            offers: scenario.presets.map((preset) => ({
+              "@type": "Offer",
+              name: preset.label,
+              priceCurrency: "TRY",
+              lowPrice: preset.min,
+              highPrice: preset.max,
+            })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: getRoutePath(language, "home"),
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Guides",
+                item: getGuidePath(language, scenario.id),
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: scenario.title,
+                item: getGuidePathBySlug(language, scenario.slug),
+              },
+            ],
+          },
+        ]
       : undefined,
   });
 
@@ -36,15 +115,17 @@ export function SeoScenarioPage() {
     return (
       <div className="page">
         <section className="result-shell empty-state">
-          <p className="eyebrow">Страница не найдена</p>
-          <h1>Такого сценария пока нет</h1>
-          <Link className="button button-primary" to="/calculator">
-            Перейти к калькулятору
+          <p className="eyebrow">{copy.notFoundEyebrow}</p>
+          <h1>{copy.notFoundTitle}</h1>
+          <Link className="button button-primary" to={getRoutePath(language, "calculator")}>
+            {copy.goCalculator}
           </Link>
         </section>
       </div>
     );
   }
+
+  const locale = localeByLanguage[language];
 
   return (
     <div className="page">
@@ -57,7 +138,7 @@ export function SeoScenarioPage() {
           </div>
 
           <div className="result-price-card">
-            <span>Ориентир по площади</span>
+            <span>{copy.areaLabel}</span>
             <strong>{scenario.areaRange}</strong>
             <p>{scenario.trustNote}</p>
           </div>
@@ -68,8 +149,8 @@ export function SeoScenarioPage() {
             <article className="example-card" key={preset.label}>
               <h3>{preset.label}</h3>
               <strong>
-                {new Intl.NumberFormat("tr-TR").format(preset.min)} -{" "}
-                {new Intl.NumberFormat("tr-TR").format(preset.max)} TL
+                {new Intl.NumberFormat(locale).format(preset.min)} -{" "}
+                {new Intl.NumberFormat(locale).format(preset.max)} TL
               </strong>
               <p>{preset.timeline}</p>
               <small>{preset.scope.join(", ")}</small>
@@ -88,20 +169,20 @@ export function SeoScenarioPage() {
 
         <div className="surface-panel">
           <div className="section-actions">
-            <Link className="button button-primary" to="/calculator">
+            <Link className="button button-primary" to={getRoutePath(language, "calculator")}>
               {scenario.heroCta}
             </Link>
-            <Link className="button button-secondary" to="/faq">
-              Перейти в FAQ
+            <Link className="button button-secondary" to={getRoutePath(language, "faq")}>
+              {copy.goFaq}
             </Link>
           </div>
         </div>
 
         <div className="surface-panel">
           <LeadForm
-            description="Оставьте контакт, если хотите использовать эту страницу как SEO-вход и сразу перевести пользователя в лид."
+            description={copy.leadDescription}
             projectType={scenario.eyebrow}
-            title="Оставить запрос по этому сценарию"
+            title={copy.leadTitle}
           />
         </div>
       </section>

@@ -1,7 +1,7 @@
-import { useState } from "react";
+﻿import { useState } from "react";
+import { useI18n } from "../i18n";
 import { trackEvent } from "../analytics";
-import { saveLead } from "../lib/lead-capture";
-import type { LeadFormPayload } from "../lib/lead-capture";
+import { saveLead, type LeadFormPayload } from "../lib/lead-capture";
 import { LEAD_EMAIL, LEAD_WHATSAPP, buildEmailUrl, buildWhatsAppUrl } from "../lib/lead-routing";
 
 type LeadFormProps = {
@@ -10,7 +10,57 @@ type LeadFormProps = {
   projectType?: string;
 };
 
+const formCopy = {
+  ru: {
+    name: "Имя",
+    namePlaceholder: "Как к вам обращаться",
+    contact: "Контакт",
+    contactPlaceholder: "Телефон, WhatsApp или email",
+    projectType: "Тип проекта",
+    projectPlaceholder: "Например, квартира 120 м²",
+    area: "Площадь",
+    areaPlaceholder: "Например, 85 м²",
+    comment: "Комментарий",
+    commentPlaceholder: "Что для вас важно: срок, материалы, кухня, санузел, срочный запуск",
+    submitted: "Заявка подготовлена",
+    submit: "Подготовить заявку",
+    note: "Заявка сохраняется локально и может быть сразу отправлена в WhatsApp или по email.",
+  },
+  tr: {
+    name: "Ad",
+    namePlaceholder: "Size nasıl hitap edelim",
+    contact: "İletişim",
+    contactPlaceholder: "Telefon, WhatsApp veya email",
+    projectType: "Proje tipi",
+    projectPlaceholder: "Örnek: 120 m² daire",
+    area: "Alan",
+    areaPlaceholder: "Örnek: 85 m²",
+    comment: "Not",
+    commentPlaceholder: "Sizin için ne önemli: süre, malzeme, mutfak, banyo, hızlı başlangıç",
+    submitted: "Talep hazırlandı",
+    submit: "Talebi hazırla",
+    note: "Talep yerel olarak saklanır ve hemen WhatsApp ya da email ile gönderilebilir.",
+  },
+  en: {
+    name: "Name",
+    namePlaceholder: "How should we address you",
+    contact: "Contact",
+    contactPlaceholder: "Phone, WhatsApp or email",
+    projectType: "Project type",
+    projectPlaceholder: "For example, apartment 120 m²",
+    area: "Area",
+    areaPlaceholder: "For example, 85 m²",
+    comment: "Comment",
+    commentPlaceholder: "What matters most: timing, materials, kitchen, bathroom, urgent start",
+    submitted: "Request prepared",
+    submit: "Prepare request",
+    note: "The request is stored locally and can be sent immediately by WhatsApp or email.",
+  },
+};
+
 export function LeadForm({ title, description, projectType = "" }: LeadFormProps) {
+  const { language } = useI18n();
+  const copy = formCopy[language];
   const [sent, setSent] = useState(false);
   const [lastPayload, setLastPayload] = useState<LeadFormPayload | null>(null);
   const [form, setForm] = useState({
@@ -67,20 +117,20 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
 
       <div className="lead-grid">
         <label className="field">
-          <span>Имя</span>
+          <span>{copy.name}</span>
           <input
             onChange={(event) => updateField("name", event.target.value)}
-            placeholder="Как к вам обращаться"
+            placeholder={copy.namePlaceholder}
             type="text"
             value={form.name}
           />
         </label>
 
         <label className="field">
-          <span>Контакт</span>
+          <span>{copy.contact}</span>
           <input
             onChange={(event) => updateField("contact", event.target.value)}
-            placeholder="Телефон, WhatsApp или email"
+            placeholder={copy.contactPlaceholder}
             required
             type="text"
             value={form.contact}
@@ -88,20 +138,20 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
         </label>
 
         <label className="field">
-          <span>Тип проекта</span>
+          <span>{copy.projectType}</span>
           <input
             onChange={(event) => updateField("projectType", event.target.value)}
-            placeholder="Например, квартира 120 м²"
+            placeholder={copy.projectPlaceholder}
             type="text"
             value={form.projectType}
           />
         </label>
 
         <label className="field">
-          <span>Площадь</span>
+          <span>{copy.area}</span>
           <input
             onChange={(event) => updateField("area", event.target.value)}
-            placeholder="Например, 85 м²"
+            placeholder={copy.areaPlaceholder}
             type="text"
             value={form.area}
           />
@@ -109,11 +159,11 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
       </div>
 
       <label className="field">
-        <span>Комментарий</span>
+        <span>{copy.comment}</span>
         <textarea
           className="textarea"
           onChange={(event) => updateField("message", event.target.value)}
-          placeholder="Что для вас важно: срок, материалы, кухня, санузел, срочный запуск"
+          placeholder={copy.commentPlaceholder}
           rows={4}
           value={form.message}
         />
@@ -121,11 +171,9 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
 
       <div className="lead-form-actions">
         <button className="button button-primary" type="submit">
-          {sent ? "Заявка подготовлена" : "Подготовить заявку"}
+          {sent ? copy.submitted : copy.submit}
         </button>
-        <p className="muted-note">
-          Заявка сохраняется локально и может быть сразу отправлена в WhatsApp или по email.
-        </p>
+        <p className="muted-note">{copy.note}</p>
       </div>
 
       <div className="contact-routing">
@@ -136,6 +184,7 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
               ...form,
               createdAt: new Date().toISOString(),
             },
+            language,
           )}
           onClick={() =>
             trackEvent("cta_click", {
@@ -155,6 +204,7 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
               ...form,
               createdAt: new Date().toISOString(),
             },
+            language,
           )}
           onClick={() =>
             trackEvent("cta_click", {
@@ -169,3 +219,4 @@ export function LeadForm({ title, description, projectType = "" }: LeadFormProps
     </form>
   );
 }
+
