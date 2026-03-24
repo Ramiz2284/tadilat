@@ -23,11 +23,10 @@ export function WizardSidebar({
 }: WizardSidebarProps) {
   return (
     <aside className="wizard-sidebar">
-      <p className="eyebrow">Wizard-калькулятор</p>
-      <h1>Соберите понятный сценарий ремонта</h1>
-      <p>
-        Пройдите по шагам без хаоса: сначала объем работ, потом материалы и сроки. В
-        конце вы получите диапазон цены, этапы ремонта и ссылку для отправки мастеру.
+      <p className="eyebrow">Калькулятор ремонта</p>
+      <h1>Соберите сценарий ремонта без хаоса</h1>
+      <p className="wizard-sidebar-intro">
+        Пройдите короткие шаги и сразу получите ориентир по бюджету, срокам и списку работ.
       </p>
 
       <div className="progress-block">
