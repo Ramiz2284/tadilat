@@ -219,7 +219,7 @@ const copyByLanguage: Record<Language, StepCopy> = {
     ],
     executionTierOptions: [
       { value: "basic", label: "Basic level", description: "Functional scope with lower demands on detail." },
-      { value: "good", label: "Good level", description: "Balanced option for the main product scenario." },
+      { value: "good", label: "Good level", description: "Balanced option for most apartment renovation projects." },
       { value: "high", label: "High level", description: "Higher expectations for precision, joints and final quality." },
     ],
     timelineOptions: [

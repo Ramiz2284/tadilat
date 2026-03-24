@@ -195,6 +195,7 @@ h3 {
   width: 100%;
   min-width: 0;
   overflow: visible;
+  flex: 1 1 auto;
 }
 
 .scroll-hint[data-scrollable="true"] {
@@ -946,7 +947,6 @@ h3 {
     padding-bottom: 40px;
   }
 
-  .topbar-actions,
   .hero-actions,
   .wizard-actions,
   .result-actions {
@@ -963,9 +963,11 @@ h3 {
   }
 
   .topbar {
-    gap: 10px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 8px;
     padding: 10px 0 12px;
-    align-items: stretch;
+    align-items: start;
   }
 
   .topbar::after {
@@ -977,18 +979,30 @@ h3 {
   }
 
   .brand {
-    width: 100%;
-    align-items: flex-start;
+    width: auto;
+    min-width: 0;
+    align-items: center;
     gap: 10px;
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .topbar-actions {
-    width: 100%;
-    gap: 8px;
+    display: contents;
   }
 
   .language-switcher {
-    align-self: flex-start;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: end;
+  }
+
+  .scroll-hint-shell {
+    width: 100%;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    align-self: stretch;
   }
 
   .scroll-hint-badge {
@@ -1006,7 +1020,7 @@ h3 {
   .brand small {
     font-size: 0.76rem;
     line-height: 1.22;
-    max-width: 18ch;
+    max-width: none;
   }
 
   .brand strong {
@@ -1051,6 +1065,8 @@ h3 {
   }
 
   .topbar-cta {
+    grid-column: 1 / -1;
+    grid-row: 3;
     min-height: 40px;
     width: min(100%, 220px);
     align-self: flex-start;
@@ -1485,6 +1501,19 @@ h3 {
     font-size: 0.84rem;
   }
 
+  .topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 6px;
+  }
+
+  .brand {
+    align-items: center;
+  }
+
+  .language-switcher {
+    justify-self: end;
+  }
+
   .scroll-hint-badge {
     right: 6px;
     padding: 0 8px;
@@ -1606,6 +1635,11 @@ h3 {
 
   .language-switcher {
     justify-self: start;
+  }
+
+  .scroll-hint-shell {
+    width: 100%;
+    justify-self: stretch;
   }
 
   .topnav {

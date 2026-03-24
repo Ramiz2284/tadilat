@@ -1,4 +1,4 @@
-import type { Language } from "../shared/i18n";
+﻿import type { Language } from "../shared/i18n";
 
 export type HeroStat = {
   label: string;
@@ -90,29 +90,29 @@ type SiteStructureContent = {
 const contentByLanguage: Record<Language, SiteStructureContent> = {
   ru: {
     heroContent: {
-      eyebrow: "Калькулятор и конструктор ТЗ на ремонт в Турции",
-      title: "Узнайте бюджет, список работ и сроки ремонта до разговора с мастером",
+      eyebrow: "Калькулятор ремонта в Турции",
+      title: "Поймите бюджет, сроки и состав работ до разговора с мастером",
       description:
-        "Выберите помещения, виды работ и уровень материалов. Сервис соберет предварительный расчет, этапы ремонта и ссылку, которую можно отправить мастеру, семье или партнеру.",
+        "Выберите тип объекта, помещения, виды работ и уровень материалов. Сервис покажет примерный диапазон стоимости, сроки по этапам и список работ, который удобно обсудить с мастером.",
       primaryCta: "Рассчитать ремонт",
       secondaryCta: "Посмотреть виды работ",
       disclaimer:
-        "Предварительный расчет. Итог зависит от площади, уровня материалов, переноса точек и скрытых дефектов после демонтажа.",
+        "Это предварительный расчет. Итоговая стоимость зависит от площади, уровня материалов, переноса точек и скрытых работ после демонтажа.",
       stats: [
         {
-          label: "Формат результата",
-          value: "Диапазон сметы",
+          label: "Формат расчета",
+          value: "Диапазон стоимости",
           note: "Без искусственно точной цифры",
         },
         {
-          label: "Что получает клиент",
+          label: "Что вы получаете",
           value: "Работы и сроки",
-          note: "Уже в первом расчете",
+          note: "В одном понятном расчете",
         },
         {
           label: "Главная польза",
           value: "Сравнение предложений",
-          note: "По одному и тому же списку работ",
+          note: "По одному и тому же составу работ",
         },
       ],
     },
@@ -122,27 +122,27 @@ const contentByLanguage: Record<Language, SiteStructureContent> = {
         kind: "cards",
         title: "Почему ремонт сложно начать",
         description:
-          "Люди боятся не самого ремонта, а хаоса вокруг него: непонятной цены, срыва сроков и недоделанного объекта после аванса.",
+          "Обычно людей пугает не сам ремонт, а непонятный бюджет, срыв сроков и риск доплат уже после старта работ.",
         items: [
           {
-            title: "Непонятно, сколько выйдет по деньгам",
+            title: "Непонятно, во сколько это обойдется",
             description:
-              "Оценки отличаются, а заранее понять реалистичный бюджет почти невозможно.",
+              "Разные мастера называют разные суммы, и до выезда на объект сложно понять реальный порядок бюджета.",
           },
           {
-            title: "Сметы сложно сравнивать между собой",
+            title: "Сметы сложно сравнить между собой",
             description:
-              "У каждого мастера свой список работ, поэтому предложения нельзя сравнить честно.",
+              "У каждого свой список работ, поэтому предложения часто сравнивают не на одной основе.",
           },
           {
-            title: "Сроки обещают устно и потом сдвигают",
+            title: "Сроки обещают устно",
             description:
-              "Без этапов и ориентиров по времени клиент не понимает, что идет по плану, а что нет.",
+              "Без этапов и ориентиров по времени трудно понять, насколько реалистичен обещанный срок.",
           },
           {
-            title: "После старта появляются доплаты и недоделки",
+            title: "После старта появляются доплаты",
             description:
-              "Часть работ всплывает позже, а итоговый объем ремонта оказывается больше ожидаемого.",
+              "Часть работ становится видна только после демонтажа, и бюджет быстро уходит выше ожиданий.",
           },
         ],
       },
@@ -151,22 +151,22 @@ const contentByLanguage: Record<Language, SiteStructureContent> = {
         kind: "steps",
         title: "Как это работает",
         description:
-          "Сервис помогает сначала собрать понятный сценарий ремонта, а уже потом обсуждать исполнение с подрядчиком.",
+          "Сначала вы собираете понятный состав проекта, а потом обсуждаете с мастером уже конкретные работы, сроки и бюджет.",
         items: [
           {
-            title: "Выбираете объект и помещения",
+            title: "Выбираете объект и площадь",
             description:
-              "Квартира целиком, кухня, санузел или отдельные комнаты с нужной площадью.",
+              "Квартира целиком, кухня, санузел или отдельная комната с нужной площадью.",
           },
           {
             title: "Отмечаете работы и уровни",
             description:
-              "Демонтаж, инженерия, отделка, материалы и желаемый уровень исполнения.",
+              "Демонтаж, инженерия, отделка, мебель, материалы и желаемый уровень исполнения.",
           },
           {
-            title: "Получаете расчет и ссылку",
+            title: "Получаете ориентир по ремонту",
             description:
-              "Бюджет-диапазон, этапы по срокам и готовый список работ, который можно отправить мастеру.",
+              "Видите примерную стоимость, сроки по этапам и готовый список работ для обсуждения.",
           },
         ],
       },
@@ -175,7 +175,7 @@ const contentByLanguage: Record<Language, SiteStructureContent> = {
         kind: "tiles",
         title: "Что можно включить в расчет",
         description:
-          "Сразу показывается полный понятный перечень работ, чтобы пользователь не гадал, есть ли в калькуляторе нужный ему сценарий.",
+          "Основные работы собраны заранее, чтобы вы сразу понимали, подходит ли расчет под ваш проект.",
         items: [
           "Демонтаж и вывоз",
           "Сантехника",
@@ -194,9 +194,9 @@ const contentByLanguage: Record<Language, SiteStructureContent> = {
       {
         id: "examples",
         kind: "examples",
-        title: "Примеры предварительных расчетов",
+        title: "Примеры расчетов",
         description:
-          "Примеры нужны не как прайс-лист, а как якорь доверия: человек видит диапазон и быстрее понимает масштаб проекта.",
+          "Это не прайс-лист, а ориентиры, которые помогают быстрее понять масштаб проекта.",
         items: [
           {
             title: "Кухня 12 м²",
@@ -221,16 +221,16 @@ const contentByLanguage: Record<Language, SiteStructureContent> = {
       {
         id: "trust",
         kind: "checklist",
-        title: "Почему этому расчету можно доверять",
+        title: "Почему такому расчету можно доверять",
         description:
-          "Сервис не обещает невозможную точность. Он помогает заранее увидеть объем работ, диапазон цены и факторы, которые действительно влияют на итог.",
+          "Сервис не обещает невозможную точность. Он помогает заранее увидеть объем работ и факторы, которые действительно влияют на итоговую стоимость.",
         items: [
-          "Показывается диапазон цены вместо искусственно точной цифры",
-          "Видно, какие работы включены в расчет",
-          "Сроки разбиваются по этапам, а не только общей суммой дней",
-          "Есть блок с факторами, которые влияют на итоговую стоимость",
-          "Расчет можно сохранить по ссылке и вернуться к нему позже",
-          "Один и тот же список работ можно отправить нескольким мастерам для честного сравнения",
+          "Показывается диапазон цены вместо одной случайной цифры",
+          "Сразу видно, какие работы входят в расчет",
+          "Сроки разбиты по этапам, а не даны одной общей цифрой",
+          "Отдельно указаны факторы, которые могут влиять на итог",
+          "Расчет можно сохранить и вернуться к нему позже",
+          "Один и тот же список работ можно обсудить с несколькими мастерами",
         ],
       },
       {
@@ -238,27 +238,27 @@ const contentByLanguage: Record<Language, SiteStructureContent> = {
         kind: "faq",
         title: "Частые вопросы",
         description:
-          "FAQ должен закрывать не технические детали калькулятора, а главные опасения перед началом ремонта.",
+          "Здесь собраны самые частые вопросы перед началом ремонта: о цене, сроках и составе работ.",
         items: [
           {
             question: "Это точная цена ремонта?",
             answer:
-              "Нет, это предварительный расчет. Он помогает заранее понять реалистичный диапазон бюджета и состав работ до выезда на объект.",
+              "Нет. Это предварительный расчет, который помогает заранее понять реалистичный диапазон бюджета и состав работ.",
           },
           {
             question: "Почему показывается диапазон, а не одна сумма?",
             answer:
-              "Потому что итог зависит от уровня материалов, состояния основания, переноса мокрых точек и скрытых дефектов после демонтажа.",
+              "Потому что итог зависит от уровня материалов, состояния основания, переноса мокрых точек и скрытых работ после демонтажа.",
           },
           {
             question: "Можно ли отправить результат мастеру?",
             answer:
-              "Да. В результате формируется ссылка с тем же набором выбора, чтобы мастер видел тот же список работ и тот же состав проекта.",
+              "Да. Расчет удобно использовать как основу для разговора, чтобы обсуждать один и тот же состав работ.",
           },
           {
             question: "Чем это лучше обычного звонка подрядчику?",
             answer:
-              "Сначала вы собираете понятный сценарий ремонта и только потом обсуждаете исполнение. Это снижает хаос и помогает сравнивать предложения на одной основе.",
+              "Сначала вы понимаете примерный объем проекта, а уже потом обсуждаете детали. Это помогает говорить предметно и сравнивать предложения спокойнее.",
           },
         ],
       },
@@ -267,7 +267,7 @@ const contentByLanguage: Record<Language, SiteStructureContent> = {
         kind: "cta",
         title: "Получите предварительный расчет ремонта",
         description:
-          "Сначала соберите список работ, бюджет и сроки. Потом отправьте готовый расчет мастеру, семье или партнеру.",
+          "Соберите список работ, бюджет и сроки, чтобы говорить с мастером уже на понятной основе.",
         primaryCta: "Открыть калькулятор",
         secondaryCta: "Посмотреть пример результата",
       },
@@ -275,379 +275,375 @@ const contentByLanguage: Record<Language, SiteStructureContent> = {
   },
   tr: {
     heroContent: {
-      eyebrow: "T?rkiye'de tadilat i?in hesaplay?c? ve i? kapsam? olu?turucu",
-      title: "Ustayla konu?madan ?nce b?t?eyi, i? listesini ve s?reyi g?r?n",
+      eyebrow: "Türkiye'de tadilat hesaplayıcısı",
+      title: "Ustayla konuşmadan önce bütçeyi, süreyi ve işleri görün",
       description:
-        "Mek?nlar?, i? kalemlerini ve malzeme seviyesini se?in. Sistem size ?n hesap, i? a?amalar? ve ustaya, aileye ya da orta?a g?nderebilece?iniz bir ba?lant? haz?rlar.",
-      primaryCta: "Tadilati hesapla",
-      secondaryCta: "?? kalemlerini g?r",
+        "Mülk tipini, alanı, iş kalemlerini ve malzeme seviyesini seçin. Sistem size yaklaşık maliyet aralığı, aşamalı zaman planı ve ustayla konuşabileceğiniz net bir iş listesi verir.",
+      primaryCta: "Tadilatı hesapla",
+      secondaryCta: "İş kalemlerini gör",
       disclaimer:
-        "Bu bir ?n hesapt?r. Nihai tutar metrekareye, malzeme seviyesine, tesisat de?i?ikliklerine ve s?k?m sonras? ??kacak gizli sorunlara ba?l?d?r.",
+        "Bu ön hesaptır. Nihai tutar metrekareye, malzeme seviyesine, tesisat değişikliklerine ve söküm sonrası ortaya çıkabilecek ek işlere bağlıdır.",
       stats: [
         {
-          label: "Sonu? format?",
-          value: "B?t?e aral???",
-          note: "Yapay ?ekilde tek rakam verilmez",
+          label: "Hesap formatı",
+          value: "Maliyet aralığı",
+          note: "Tek bir yapay rakam yerine",
         },
         {
-          label: "Kullan?c? ne al?r",
-          value: "?? listesi ve s?re",
-          note: "?lk hesapta bile g?r?n?r",
+          label: "Ne görürsünüz",
+          value: "İşler ve süre",
+          note: "Tek bir net tabloda",
         },
         {
-          label: "Ana fayda",
-          value: "Teklifleri kar??la?t?rma",
-          note: "Ayn? i? listesi ?zerinden",
+          label: "En büyük fayda",
+          value: "Teklif karşılaştırma",
+          note: "Aynı iş listesi üzerinden",
         },
       ],
     },
-    landingSections: [],
+    landingSections: [
+      {
+        id: "pain-points",
+        kind: "cards",
+        title: "Tadilata başlamak neden zor",
+        description:
+          "İnsanları zorlayan şey çoğu zaman tadilatın kendisi değil; belirsiz fiyat, kayan süreler ve sonradan çıkan ek maliyetlerdir.",
+        items: [
+          {
+            title: "Gerçek bütçeyi başta görmek zor",
+            description:
+              "Farklı ustalar farklı rakam verir; keşif öncesinde doğru bütçe aralığını anlamak kolay olmaz.",
+          },
+          {
+            title: "Teklifleri karşılaştırmak zor",
+            description:
+              "Her teklif farklı iş kalemleri içerdiği için hangisinin gerçekten uygun olduğunu anlamak güçleşir.",
+          },
+          {
+            title: "Süreler net konuşulmaz",
+            description:
+              "Aşamalar görünmeden verilen teslim tarihleri çoğu zaman güven vermez.",
+          },
+          {
+            title: "İş başladıktan sonra bütçe büyür",
+            description:
+              "Bazı işler sökümden sonra ortaya çıkar ve toplam maliyet beklenenden yukarı çıkabilir.",
+          },
+        ],
+      },
+      {
+        id: "how-it-works",
+        kind: "steps",
+        title: "Nasıl çalışır",
+        description:
+          "Önce projenin kapsamını netleştirirsiniz, sonra ustayla maliyet ve uygulama detaylarını çok daha rahat konuşursunuz.",
+        items: [
+          {
+            title: "Mülkü ve alanı seçersiniz",
+            description:
+              "Tüm daire, mutfak, banyo ya da tek oda için yaklaşık metrekareyi girersiniz.",
+          },
+          {
+            title: "İşleri ve seviyeleri seçersiniz",
+            description:
+              "Söküm, tesisat, bitiş işleri, mobilya ve malzeme seviyesi bir araya gelir.",
+          },
+          {
+            title: "Yaklaşık sonucu görürsünüz",
+            description:
+              "Maliyet aralığını, zaman planını ve konuşmaya hazır iş listesini alırsınız.",
+          },
+        ],
+      },
+      {
+        id: "work-categories",
+        kind: "tiles",
+        title: "Hesaba neler dahil olabilir",
+        description:
+          "Ana iş kalemleri baştan görünür; böylece hesabın projenize uygun olup olmadığını hemen anlarsınız.",
+        items: [
+          "Söküm ve moloz atımı",
+          "Su tesisatı",
+          "Elektrik",
+          "Tavan",
+          "Sıva ve boya",
+          "Seramik",
+          "Laminat / parke",
+          "Kapılar",
+          "Pencereler",
+          "Mutfak dolapları",
+          "Banyo işleri",
+          "Özel mobilya",
+        ],
+      },
+      {
+        id: "examples",
+        kind: "examples",
+        title: "Örnek hesaplar",
+        description:
+          "Bunlar kesin fiyat değil; proje büyüklüğünü daha hızlı anlamanız için hazırlanmış örnek aralıklardır.",
+        items: [
+          {
+            title: "12 m² mutfak",
+            estimate: "300.000 TL'den başlar",
+            timeline: "15-20 gün",
+            note: "Bitiş işleri, seramik ve mutfak kurulumu dahil",
+          },
+          {
+            title: "6 m² banyo",
+            estimate: "220.000 TL'den başlar",
+            timeline: "12-18 gün",
+            note: "Tesisat, seramik ve montaj dahil",
+          },
+          {
+            title: "120 m² daire",
+            estimate: "820.000 - 1.050.000 TL",
+            timeline: "45-50 gün",
+            note: "Standart malzeme seviyesinde tam tadilat",
+          },
+        ],
+      },
+      {
+        id: "trust",
+        kind: "checklist",
+        title: "Bu hesaba neden güvenebilirsiniz",
+        description:
+          "Amaç tek bir süslü rakam vermek değil; işin kapsamını, bütçe aralığını ve maliyeti etkileyen noktaları açıkça göstermektir.",
+        items: [
+          "Tek rakam yerine gerçekçi bir aralık gösterilir",
+          "Hangi işlerin hesaba dahil olduğu açıkça görülür",
+          "Süre toplam olarak değil, aşamalar halinde düşünülür",
+          "Maliyeti etkileyebilecek başlıca noktalar ayrıca belirtilir",
+          "Hesabı kaydedip daha sonra tekrar açabilirsiniz",
+          "Aynı iş listesini birden fazla ustayla konuşabilirsiniz",
+        ],
+      },
+      {
+        id: "faq",
+        kind: "faq",
+        title: "Sık sorulan sorular",
+        description:
+          "Burada en çok sorulan konular yer alır: fiyat, süre ve iş kapsamı.",
+        items: [
+          {
+            question: "Bu kesin tadilat fiyatı mı?",
+            answer:
+              "Hayır. Bu ön hesaptır ve başlamadan önce yaklaşık bütçe aralığını anlamanıza yardımcı olur.",
+          },
+          {
+            question: "Neden tek tutar yerine aralık gösteriliyor?",
+            answer:
+              "Çünkü sonuç malzeme seviyesine, mevcut duruma, tesisat değişikliklerine ve söküm sonrası çıkabilecek işlere göre değişebilir.",
+          },
+          {
+            question: "Sonucu ustayla paylaşabilir miyim?",
+            answer:
+              "Evet. Hesap, aynı iş listesini konuşabilmeniz için iyi bir başlangıç noktası sağlar.",
+          },
+          {
+            question: "Bu neden telefonda fiyat sormaktan daha iyi?",
+            answer:
+              "Önce projenin çerçevesini görürsünüz, sonra detay konuşursunuz. Bu da görüşmeyi daha net ve sakin hale getirir.",
+          },
+        ],
+      },
+      {
+        id: "final-cta",
+        kind: "cta",
+        title: "Tadilat için ön hesap alın",
+        description:
+          "İşleri, bütçeyi ve süreyi önceden görün; ustayla daha net konuşun.",
+        primaryCta: "Hesaplayıcıyı aç",
+        secondaryCta: "Örnek sonucu gör",
+      },
+    ],
   },
   en: {
     heroContent: {
-      eyebrow: "Renovation calculator and brief builder for Turkey",
-      title: "See budget, work scope and timeline before you talk to a contractor",
+      eyebrow: "Renovation calculator for Turkey",
+      title: "See budget, timing and scope before you talk to a contractor",
       description:
-        "Choose the rooms, work categories and material level. The tool builds a preliminary estimate, a phase-based timeline and a shareable link you can send to a contractor, partner or family member.",
+        "Choose the property type, rooms, work categories and material level. The tool shows an estimated cost range, a phase-based timeline and a clear scope of work you can discuss with a contractor.",
       primaryCta: "Estimate renovation",
       secondaryCta: "View work categories",
       disclaimer:
-        "This is a preliminary estimate. Final cost depends on area, material level, relocations of utility points and hidden issues revealed after demolition.",
+        "This is a preliminary estimate. Final cost depends on area, material level, relocated utility points and hidden issues revealed after demolition.",
       stats: [
         {
-          label: "Result format",
-          value: "Budget range",
-          note: "Not a fake single number",
+          label: "Estimate format",
+          value: "Cost range",
+          note: "Instead of a fake single number",
         },
         {
-          label: "What the client gets",
+          label: "What you get",
           value: "Works and timing",
-          note: "Visible from the first estimate",
+          note: "In one clear overview",
         },
         {
-          label: "Main value",
+          label: "Main benefit",
           value: "Comparable offers",
           note: "Based on the same scope of work",
         },
       ],
     },
-    landingSections: [],
+    landingSections: [
+      {
+        id: "pain-points",
+        kind: "cards",
+        title: "Why starting a renovation feels difficult",
+        description:
+          "What makes renovation stressful is usually not the work itself, but unclear pricing, shifting timelines and surprise costs after work begins.",
+        items: [
+          {
+            title: "Hard to understand the real budget upfront",
+            description:
+              "Different contractors quote different numbers, so it is difficult to see a realistic budget before the site visit.",
+          },
+          {
+            title: "Quotes are hard to compare fairly",
+            description:
+              "Each quote includes a different scope, so side-by-side comparison often becomes confusing.",
+          },
+          {
+            title: "Timelines are often vague",
+            description:
+              "Without stages and rough timing, promised deadlines rarely feel reliable.",
+          },
+          {
+            title: "Extra costs appear after work starts",
+            description:
+              "Some tasks only become visible after demolition, and the budget can quickly move higher than expected.",
+          },
+        ],
+      },
+      {
+        id: "how-it-works",
+        kind: "steps",
+        title: "How it works",
+        description:
+          "You define the project scope first and only then discuss execution, cost and timing with the contractor.",
+        items: [
+          {
+            title: "Choose the property and area",
+            description:
+              "Start with the whole apartment, a kitchen, a bathroom or one room plus the approximate area.",
+          },
+          {
+            title: "Pick works and quality levels",
+            description:
+              "Demolition, engineering, finishing, furniture and material level are gathered in one place.",
+          },
+          {
+            title: "See the estimate overview",
+            description:
+              "You get a budget range, timeline phases and a ready work scope for discussion.",
+          },
+        ],
+      },
+      {
+        id: "work-categories",
+        kind: "tiles",
+        title: "What can be included",
+        description:
+          "The main categories are visible upfront, so you can quickly see whether the estimate matches your project.",
+        items: [
+          "Demolition and disposal",
+          "Plumbing",
+          "Electrical",
+          "Ceilings",
+          "Plaster and paint",
+          "Tile",
+          "Laminate / parquet",
+          "Doors",
+          "Windows",
+          "Kitchen cabinetry",
+          "Bathroom works",
+          "Custom furniture",
+        ],
+      },
+      {
+        id: "examples",
+        kind: "examples",
+        title: "Sample estimates",
+        description:
+          "These are not fixed prices. They are example ranges to help you understand project size faster.",
+        items: [
+          {
+            title: "Kitchen 12 m²",
+            estimate: "from 300,000 TL",
+            timeline: "15-20 days",
+            note: "With finishing, tiling and kitchen installation",
+          },
+          {
+            title: "Bathroom 6 m²",
+            estimate: "from 220,000 TL",
+            timeline: "12-18 days",
+            note: "With plumbing, tiling and installation",
+          },
+          {
+            title: "Apartment 120 m²",
+            estimate: "820,000 - 1,050,000 TL",
+            timeline: "45-50 days",
+            note: "Full renovation with a standard material level",
+          },
+        ],
+      },
+      {
+        id: "trust",
+        kind: "checklist",
+        title: "Why this estimate is useful",
+        description:
+          "The goal is not to promise false precision, but to make scope, budget range and cost drivers easier to understand before work begins.",
+        items: [
+          "It shows a realistic range instead of one random number",
+          "Included works are clearly visible",
+          "Timeline is viewed by phases, not as one vague deadline",
+          "Main cost drivers are highlighted separately",
+          "You can save the estimate and return to it later",
+          "You can discuss the same scope with more than one contractor",
+        ],
+      },
+      {
+        id: "faq",
+        kind: "faq",
+        title: "Frequently asked questions",
+        description:
+          "These are the most common questions before starting a renovation: price, timing and scope.",
+        items: [
+          {
+            question: "Is this the exact renovation price?",
+            answer:
+              "No. It is a preliminary estimate designed to help you understand a realistic budget range before work begins.",
+          },
+          {
+            question: "Why show a range instead of one number?",
+            answer:
+              "Because final cost depends on materials, current condition, relocated wet points and hidden issues found after demolition.",
+          },
+          {
+            question: "Can I share the result with a contractor?",
+            answer:
+              "Yes. The estimate gives you a clear starting point for discussing the same scope of work.",
+          },
+          {
+            question: "Why is this better than asking for a quick quote by phone?",
+            answer:
+              "You first understand the project itself, then discuss execution. That usually leads to a clearer and calmer conversation.",
+          },
+        ],
+      },
+      {
+        id: "final-cta",
+        kind: "cta",
+        title: "Get a preliminary renovation estimate",
+        description:
+          "See scope, budget and timing before you start talking to contractors.",
+        primaryCta: "Open calculator",
+        secondaryCta: "See a sample result",
+      },
+    ],
   },
 };
-
-contentByLanguage.tr.landingSections = [
-  {
-    id: "pain-points",
-    kind: "cards",
-    title: "Tadilata ba?lamak neden zor",
-    description:
-      "?nsanlar yaln?zca tadilattan de?il, etraf?ndaki belirsizlikten ?ekinir: net olmayan fiyat, sarkan teslim tarihi ve avans sonras? yar?m kalan i?ler.",
-    items: [
-      {
-        title: "Toplam b?t?eyi ba?tan anlamak zor",
-        description:
-          "Farkl? ustalar farkl? rakam verir; ger?ek?i b?t?eyi en ba?ta g?rmek neredeyse imk?ns?z olur.",
-      },
-      {
-        title: "Teklifleri adil kar??la?t?rmak zor",
-        description:
-          "Her ustan?n i? listesi farkl? oldu?u i?in teklifleri bire bir kar??la?t?rmak kolay de?ildir.",
-      },
-      {
-        title: "S?reler s?zl? verilir ve sonra de?i?ir",
-        description:
-          "A?amalar? ve zaman tahminlerini g?rmeden neyin plana g?re gitti?ini anlamak zordur.",
-      },
-      {
-        title: "Ba?lang??tan sonra ek maliyetler ??kar",
-        description:
-          "Baz? i?ler daha sonra ortaya ??kar ve projenin kapsam? beklenenden b?y?k h?le gelir.",
-      },
-    ],
-  },
-  {
-    id: "how-it-works",
-    kind: "steps",
-    title: "Nas?l ?al???r",
-    description:
-      "Servis ?nce net bir tadilat senaryosu toplar, sonra y?kleniciyle uygulama detaylar?n? konu?may? kolayla?t?r?r.",
-    items: [
-      {
-        title: "M?lk ve alanlar? se?ersiniz",
-        description:
-          "T?m daire, mutfak, banyo ya da belirli odalar ve yakla??k metrekare ile ba?lars?n?z.",
-      },
-      {
-        title: "??leri ve seviyeleri i?aretlersiniz",
-        description:
-          "S?k?m, tesisat, biti?, malzeme seviyesi ve i??ilik beklentisi birlikte toplan?r.",
-      },
-      {
-        title: "Hesap ve payla??m linki al?rs?n?z",
-        description:
-          "B?t?e aral???, zaman asamalari ve ustaya gonderebileceginiz hazir is listesi olusur.",
-      },
-    ],
-  },
-  {
-    id: "work-categories",
-    kind: "tiles",
-    title: "Hesaba neler dahil edilebilir",
-    description:
-      "T?m ana i? kalemleri ba?tan g?r?n?r; kullan?c? gerekli senaryonun hesaplay?c?da olup olmad???n? hemen anlar.",
-    items: [
-      "S?k?m ve moloz at?m?",
-      "Su tesisat?",
-      "Elektrik",
-      "Tavan",
-      "S?va ve boya",
-      "Seramik",
-      "Laminat / parke",
-      "Kap?lar",
-      "Pencereler",
-      "Mutfak dolaplar?",
-      "Banyo",
-      "?zel mobilya",
-    ],
-  },
-  {
-    id: "examples",
-    kind: "examples",
-    title: "?rnek ?n hesaplar",
-    description:
-      "Bunlar fiyat listesi de?il; kullan?c?n?n proje b?y?kl???n? daha h?zl? anlamas? i?in g?ven veren referans senaryolard?r.",
-    items: [
-      {
-        title: "12 m² mutfak",
-        estimate: "300.000 TL'den ba?lar",
-        timeline: "15-20 g?n",
-        note: "Biti?, seramik ve mutfak kurulumu dahil",
-      },
-      {
-        title: "6 m² banyo",
-        estimate: "220.000 TL'den ba?lar",
-        timeline: "12-18 g?n",
-        note: "Tesisat, seramik ve montaj dahil",
-      },
-      {
-        title: "120 m² daire",
-        estimate: "820.000 - 1.050.000 TL",
-        timeline: "45-50 g?n",
-        note: "Standart malzeme seviyesinde tam tadilat",
-      },
-    ],
-  },
-  {
-    id: "trust",
-    kind: "checklist",
-    title: "Bu ?n hesaba neden g?venilebilir",
-    description:
-      "Servis imk?ns?z bir kesinlik vaat etmez. Bunun yerine i? hacmini, fiyat aral???n? ve sonucu ger?ekten etkileyen noktalar? erkenden g?sterir.",
-    items: [
-      "Tek rakam yerine fiyat aral??? g?sterilir",
-      "Hangi i?lerin hesaba dahil oldu?u a??k?a g?r?l?r",
-      "S?re toplam g?n yerine a?amalara ayr?l?r",
-      "Maliyeti etkileyen risk fakt?rleri ayr?ca verilir",
-      "Hesap link olarak saklanabilir ve sonra tekrar a??labilir",
-      "Ayn? i? listesi birden fazla ustaya g?nderilip adil kar??la?t?rma yap?labilir",
-    ],
-  },
-  {
-    id: "faq",
-    kind: "faq",
-    title: "S?k sorulan sorular",
-    description:
-      "Buradaki sorular teknik ayr?nt?lardan ?ok, tadilata ba?larken duyulan temel g?vensizlikleri cevaplar.",
-    items: [
-      {
-        question: "Bu kesin tadilat fiyat? m??",
-        answer:
-          "Hayir. Bu bir on hesaptir; kesif oncesinde gercekci butce araligini ve is kapsamını anlamaniza yardim eder.",
-      },
-      {
-        question: "Neden tek tutar yerine aral?k g?steriliyor?",
-        answer:
-          "??nk? sonu? malzeme seviyesine, mevcut y?zey durumuna, tesisat de?i?ikliklerine ve s?k?m sonras? ??kabilecek gizli problemlere ba?l?d?r.",
-      },
-      {
-        question: "Sonucu ustaya g?nderebilir miyim?",
-        answer:
-          "Evet. Sonu? sayfas?nda ayn? se?imleri i?eren bir ba?lant? olu?ur; usta ayn? i? listesini g?r?r.",
-      },
-      {
-        question: "Bu neden telefonla fiyat sormaktan daha iyi?",
-        answer:
-          "?nce net bir tadilat senaryosu olu?turursunuz, sonra uygulamay? konu?ursunuz. Bu da karma?ay? azalt?r ve teklifleri ortak zeminde kar??la?t?rman?z? sa?lar.",
-      },
-    ],
-  },
-  {
-    id: "final-cta",
-    kind: "cta",
-    title: "Tadilat i?in ?n hesap al?n",
-    description:
-      "?nce i? listesini, b?t?eyi ve s?reyi toplay?n. Sonra haz?r sonucu ustaya, aileye ya da orta?a g?nderin.",
-    primaryCta: "Hesaplay?c?y? a?",
-    secondaryCta: "?rnek sonucu g?r",
-  },
-];
-
-contentByLanguage.en.landingSections = [
-  {
-    id: "pain-points",
-    kind: "cards",
-    title: "Why starting a renovation feels difficult",
-    description:
-      "People are rarely afraid of renovation itself. They are afraid of unclear pricing, slipping deadlines and unfinished work after paying an advance.",
-    items: [
-      {
-        title: "Hard to understand the real budget upfront",
-        description:
-          "Quotes vary widely, and it is difficult to see a realistic budget before a site inspection.",
-      },
-      {
-        title: "Different quotes are hard to compare",
-        description:
-          "Each contractor uses a different scope, so side-by-side comparison is rarely fair.",
-      },
-      {
-        title: "Timelines are promised verbally and later move",
-        description:
-          "Without phases and rough timing, it is hard to tell what is on track and what is not.",
-      },
-      {
-        title: "Extra costs appear after work starts",
-        description:
-          "Some tasks become visible later, and the final scope ends up larger than expected.",
-      },
-    ],
-  },
-  {
-    id: "how-it-works",
-    kind: "steps",
-    title: "How it works",
-    description:
-      "The service helps you structure the renovation first and only then discuss execution with the contractor.",
-    items: [
-      {
-        title: "Choose the property and areas",
-        description:
-          "Start with the whole apartment, a kitchen, a bathroom or selected rooms plus the approximate area.",
-      },
-      {
-        title: "Mark works and quality levels",
-        description:
-          "Demolition, engineering, finishing, materials and expected execution level are collected in one place.",
-      },
-      {
-        title: "Get the estimate and share link",
-        description:
-          "You receive a budget range, timeline phases and a ready scope of work that can be shared with a contractor.",
-      },
-    ],
-  },
-  {
-    id: "work-categories",
-    kind: "tiles",
-    title: "What can be included",
-    description:
-      "The calculator shows the main categories upfront, so people can quickly see whether their scenario is covered.",
-    items: [
-      "Demolition and disposal",
-      "Plumbing",
-      "Electrical",
-      "Ceilings",
-      "Plaster and paint",
-      "Tile",
-      "Laminate / parquet",
-      "Doors",
-      "Windows",
-      "Kitchen cabinets",
-      "Bathroom works",
-      "Custom furniture",
-    ],
-  },
-  {
-    id: "examples",
-    kind: "examples",
-    title: "Sample preliminary estimates",
-    description:
-      "These examples are not a price list. They act as trust anchors that help people understand project scale faster.",
-    items: [
-      {
-        title: "Kitchen 12 m²",
-        estimate: "from 300,000 TL",
-        timeline: "15-20 days",
-        note: "With finishing, tiling and kitchen installation",
-      },
-      {
-        title: "Bathroom 6 m²",
-        estimate: "from 220,000 TL",
-        timeline: "12-18 days",
-        note: "With plumbing, tiling and installation",
-      },
-      {
-        title: "Apartment 120 m²",
-        estimate: "820,000 - 1,050,000 TL",
-        timeline: "45-50 days",
-        note: "Full renovation with a standard material level",
-      },
-    ],
-  },
-  {
-    id: "trust",
-    kind: "checklist",
-    title: "Why this estimate is trustworthy",
-    description:
-      "The product does not promise impossible precision. It helps people see the scope, the budget range and the factors that really affect the final cost.",
-    items: [
-      "It shows a price range instead of an artificially exact number",
-      "The included work scope is visible",
-      "Timeline is broken into phases rather than one total number",
-      "Cost drivers and risks are listed separately",
-      "The estimate can be saved and reopened from a link",
-      "The same scope can be sent to several contractors for a fair comparison",
-    ],
-  },
-  {
-    id: "faq",
-    kind: "faq",
-    title: "Frequently asked questions",
-    description:
-      "This FAQ addresses renovation anxiety and trust concerns, not just product mechanics.",
-    items: [
-      {
-        question: "Is this an exact renovation price?",
-        answer:
-          "No. It is a preliminary estimate that helps you understand a realistic budget range and work scope before the site visit.",
-      },
-      {
-        question: "Why show a range instead of one number?",
-        answer:
-          "Because final cost depends on material level, substrate condition, wet-point relocation and hidden issues discovered after demolition.",
-      },
-      {
-        question: "Can I send the result to a contractor?",
-        answer:
-          "Yes. The result page creates a link with the same selections so the contractor sees the same scope of work.",
-      },
-      {
-        question: "Why is this better than a quick phone quote?",
-        answer:
-          "You define the renovation scenario first and discuss execution second. That reduces chaos and makes offers easier to compare.",
-      },
-    ],
-  },
-  {
-    id: "final-cta",
-    kind: "cta",
-    title: "Get a preliminary renovation estimate",
-    description:
-      "First collect scope, budget and timing. Then send the finished estimate to a contractor, partner or family member.",
-    primaryCta: "Open calculator",
-    secondaryCta: "See a sample result",
-  },
-];
 
 export function getSiteStructureContent(language: Language) {
   return contentByLanguage[language];
