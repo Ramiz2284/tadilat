@@ -1,3 +1,4 @@
+import type { Language } from "../../../shared/i18n";
 import type {
   CalculatorState,
   ExecutionTier,
@@ -5,38 +6,58 @@ import type {
   ObjectType,
   TimelinePreference,
 } from "./schema";
-import {
-  executionTierOptions,
-  materialTierOptions,
-  objectTypeOptions,
-  timelineOptions,
-  workCategoryOptions,
-} from "./steps";
+import { getCalculatorCopy } from "./steps";
 
-export function getObjectTypeLabel(stepValue: ObjectType | null) {
-  return objectTypeOptions.find((option) => option.value === stepValue)?.label ?? "Не выбран";
-}
-
-export function getMaterialLabel(stepValue: MaterialTier) {
-  return materialTierOptions.find((option) => option.value === stepValue)?.label ?? "Стандарт";
-}
-
-export function getExecutionLabel(stepValue: ExecutionTier) {
+export function getObjectTypeLabel(stepValue: ObjectType | null, language: Language) {
   return (
-    executionTierOptions.find((option) => option.value === stepValue)?.label ??
-    "Хороший уровень"
+    getCalculatorCopy(language).objectTypeOptions.find((option) => option.value === stepValue)
+      ?.label ??
+    {
+      ru: "Не выбран",
+      tr: "Secilmedi",
+      en: "Not selected",
+    }[language]
   );
 }
 
-export function getTimelineLabel(stepValue: TimelinePreference) {
+export function getMaterialLabel(stepValue: MaterialTier, language: Language) {
   return (
-    timelineOptions.find((option) => option.value === stepValue)?.label ??
-    "Стандартный темп"
+    getCalculatorCopy(language).materialTierOptions.find((option) => option.value === stepValue)
+      ?.label ??
+    {
+      ru: "Стандарт",
+      tr: "Standart",
+      en: "Standard",
+    }[language]
   );
 }
 
-export function getWorkNames(state: Pick<CalculatorState, "works">) {
-  return workCategoryOptions
+export function getExecutionLabel(stepValue: ExecutionTier, language: Language) {
+  return (
+    getCalculatorCopy(language).executionTierOptions.find((option) => option.value === stepValue)
+      ?.label ??
+    {
+      ru: "Хороший уровень",
+      tr: "Iyi seviye",
+      en: "Good level",
+    }[language]
+  );
+}
+
+export function getTimelineLabel(stepValue: TimelinePreference, language: Language) {
+  return (
+    getCalculatorCopy(language).timelineOptions.find((option) => option.value === stepValue)
+      ?.label ??
+    {
+      ru: "Стандартный темп",
+      tr: "Standart tempo",
+      en: "Standard pace",
+    }[language]
+  );
+}
+
+export function getWorkNames(state: Pick<CalculatorState, "works">, language: Language) {
+  return getCalculatorCopy(language).workCategoryOptions
     .filter((option) => state.works.includes(option.value))
     .map((option) => option.label);
 }

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { calculateEstimate } from "../entities/estimate/model";
 import {
   buildNormalizedCalculatorState,
-  calculatorSteps,
   defaultCalculatorState,
-  getRecommendedWorksForObject,
+  getCalculatorCopy,
   getWorkNames,
+  getRecommendedWorksForObject,
   sanitizeWorksForObject,
   validateCalculatorState,
   type CalculatorState,
@@ -16,6 +16,7 @@ import {
   type WorkCategory,
 } from "../features/calculator/model";
 import { WizardSidebar, WizardStepContent } from "../features/calculator/ui";
+import { getAlternatesForRoute, getRoutePath, useI18n } from "../shared/i18n";
 import { trackEvent } from "../shared/analytics";
 import { loadCalculatorState, saveCalculatorState } from "../shared/lib/persistence";
 import { useSeo } from "../shared/seo/useSeo";
@@ -24,21 +25,86 @@ function toggleValue<T>(list: T[], value: T) {
   return list.includes(value) ? list.filter((item) => item !== value) : [...list, value];
 }
 
-function getVisibleSteps(state: CalculatorState) {
-  return calculatorSteps.filter((step) => (step.isVisible ? step.isVisible(state) : true));
+function getVisibleSteps(state: CalculatorState, language: ReturnType<typeof useI18n>["language"]) {
+  return getCalculatorCopy(language).calculatorSteps.filter((step) =>
+    step.isVisible ? step.isVisible(state) : true,
+  );
 }
 
-export function CalculatorPage() {
-  useSeo({
-    title: "Калькулятор ремонта: рассчитать бюджет и сроки",
-    description:
+const pageCopy = {
+  ru: {
+    seoTitle: "Калькулятор ремонта: рассчитать бюджет и сроки",
+    seoDescription:
       "Выберите объект, площадь, виды работ, материалы и желаемый темп. Получите предварительный диапазон сметы и этапы ремонта.",
-    path: "/calculator",
-  });
+    stepLabel: "Шаг",
+    missingTitle: "Чтобы получить результат, нужно заполнить обязательные поля.",
+    back: "Назад",
+    next: "Следующий шаг",
+    showResult: "Показать результат",
+  },
+  tr: {
+    seoTitle: "Tadilat hesaplayıcı: bütçe ve süre hesapla",
+    seoDescription:
+      "Mülk tipini, alanı, iş kalemlerini, malzeme seviyesini ve hedef hızı seçin. Ön bütçe aralığı ve tadilat aşamalarını görün.",
+    stepLabel: "Adım",
+    missingTitle: "Sonucu görmek için zorunlu alanları doldurun.",
+    back: "Geri",
+    next: "Sonraki adım",
+    showResult: "Sonucu göster",
+  },
+  en: {
+    seoTitle: "Renovation calculator: estimate budget and timing",
+    seoDescription:
+      "Choose the property, area, work scope, materials and preferred pace. Get a preliminary budget range and renovation phases.",
+    stepLabel: "Step",
+    missingTitle: "Fill in the required fields to see the result.",
+    back: "Back",
+    next: "Next step",
+    showResult: "Show result",
+  },
+};
 
+export function CalculatorPage() {
   const navigate = useNavigate();
+  const { language } = useI18n();
+  const copy = pageCopy[language];
   const [state, setState] = useState<CalculatorState>(defaultCalculatorState);
   const [activeStepId, setActiveStepId] = useState<CalculatorStep["id"]>("object-type");
+
+  useSeo({
+    title: copy.seoTitle,
+    description: copy.seoDescription,
+    path: getRoutePath(language, "calculator"),
+    alternates: getAlternatesForRoute("calculator"),
+    structuredData: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: copy.seoTitle,
+        description: copy.seoDescription,
+        url: getRoutePath(language, "calculator"),
+        inLanguage: language,
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: getRoutePath(language, "home"),
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: copy.seoTitle,
+            item: getRoutePath(language, "calculator"),
+          },
+        ],
+      },
+    ],
+  });
 
   useEffect(() => {
     const persistedState = loadCalculatorState();
@@ -57,17 +123,20 @@ export function CalculatorPage() {
     saveCalculatorState(state);
   }, [state]);
 
-  const visibleSteps = useMemo(() => getVisibleSteps(state), [state]);
+  const visibleSteps = useMemo(() => getVisibleSteps(state, language), [state, language]);
   const activeIndex = Math.max(
     visibleSteps.findIndex((step) => step.id === activeStepId),
     0,
   );
   const activeStep = visibleSteps[activeIndex] ?? visibleSteps[0];
   const normalizedState = useMemo(() => buildNormalizedCalculatorState(state), [state]);
-  const validation = useMemo(() => validateCalculatorState(normalizedState), [normalizedState]);
+  const validation = useMemo(
+    () => validateCalculatorState(normalizedState, language),
+    [normalizedState, language],
+  );
   const liveEstimate = useMemo(
-    () => (validation.isValid ? calculateEstimate(normalizedState) : null),
-    [normalizedState, validation.isValid],
+    () => (validation.isValid ? calculateEstimate(normalizedState, language) : null),
+    [normalizedState, validation.isValid, language],
   );
   const progressPercent = ((activeIndex + 1) / visibleSteps.length) * 100;
 
@@ -133,7 +202,7 @@ export function CalculatorPage() {
   function goNext() {
     if (activeIndex === visibleSteps.length - 1) {
       const encodedState = encodeURIComponent(JSON.stringify(normalizedState));
-      navigate(`/result?data=${encodedState}`);
+      navigate(`${getRoutePath(language, "result")}?data=${encodedState}`);
       return;
     }
 
@@ -153,7 +222,9 @@ export function CalculatorPage() {
 
         <section className="wizard-panel">
           <div className="wizard-panel-heading">
-            <p className="eyebrow">Шаг {activeIndex + 1}</p>
+            <p className="eyebrow">
+              {copy.stepLabel} {activeIndex + 1}
+            </p>
             <h2>{activeStep?.title}</h2>
             <p>{activeStep?.description}</p>
           </div>
@@ -178,19 +249,21 @@ export function CalculatorPage() {
             state={normalizedState}
           />
 
-          {activeStep?.id !== "result" && getWorkNames(normalizedState).length > 0 ? (
+          {activeStep?.id !== "result" && getWorkNames(normalizedState, language).length > 0 ? (
             <div className="selected-inline">
-              {getWorkNames(normalizedState).slice(0, 6).map((work) => (
-                <span className="pill" key={work}>
-                  {work}
-                </span>
-              ))}
+              {getWorkNames(normalizedState, language)
+                .slice(0, 6)
+                .map((work) => (
+                  <span className="pill" key={work}>
+                    {work}
+                  </span>
+                ))}
             </div>
           ) : null}
 
           {!validation.isValid && activeStep?.id === "result" ? (
             <div className="error-box">
-              <strong>Чтобы получить результат, нужно заполнить обязательные поля.</strong>
+              <strong>{copy.missingTitle}</strong>
               <p>{Object.values(validation.errors)[0]}</p>
             </div>
           ) : null}
@@ -202,7 +275,7 @@ export function CalculatorPage() {
               onClick={() => goToStep(Math.max(activeIndex - 1, 0))}
               type="button"
             >
-              Назад
+              {copy.back}
             </button>
 
             <button
@@ -211,7 +284,7 @@ export function CalculatorPage() {
               onClick={goNext}
               type="button"
             >
-              {activeStep?.id === "result" ? "Показать результат" : "Следующий шаг"}
+              {activeStep?.id === "result" ? copy.showResult : copy.next}
             </button>
           </div>
         </section>
